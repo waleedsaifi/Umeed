@@ -13,12 +13,12 @@ import {
 } from 'react-native'
 import RadioForm from 'react-native-simple-radio-button';
 
-
 const genderOptions = [
   { label: "Male", value: 0 },
   { label: "Female", value: 1 },
   { label: "Others", value: 2 },
 ];
+
 class SignupPatient extends Component {
 
   constructor() {
@@ -39,7 +39,6 @@ class SignupPatient extends Component {
     headerLeft: null,
     headerStyle: {
       backgroundColor: '#3498db',
-
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -47,7 +46,7 @@ class SignupPatient extends Component {
       marginHorizontal: '40%'
     },
   };
-
+  
   myfun = () => {
     const { username, email, password, phone_number, gender, age, CNIC } = this.state;
     // alert(CNIC);
