@@ -65,6 +65,7 @@ class SignupPatient extends Component {
       signupInfo.email = this.state.email;
       signupInfo.password = this.state.password;
       signupInfo.gender = this.state.gender;
+      signupInfo.joiningDate =new Date("<YYYY-mm-ddTHH:MM:ssZ>").getDate()
       // console.warn(signupInfo);
       // var url = 'http://89.89.89.43:5000/signup';  // Office
       // var url = 'http://192.168.0.108:5000/signup';  // Home 

@@ -68,7 +68,7 @@ class registeredPatient extends Component {
             method: 'DELETE'
         }).then(res => res.json())
             .then(response => {
-                //   console.log('Success:', JSON.stringify(response))
+                  console.log('Deleted:', JSON.stringify(response))
                 this.hideAlert();
                 this.setState({
                     refreshing:true
