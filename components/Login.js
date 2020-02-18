@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
 
     },buttonText: {
         color: 'white',
-        fontWeight: '900',
+        fontWeight: '900',  
         textAlign: 'center',
         borderRadius: 14,
 
