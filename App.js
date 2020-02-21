@@ -10,15 +10,21 @@ import registeredPatient from './components/AdminPanel/registeredPatient'
 import adminDashboard  from './components/AdminPanel/adminDashboard';
 import patientDashboard from './components/PatientPanel/patientDashboard';
 import SignupPatient from './components/SignupPatient';
+import SignupPsychologist from './components/SignupPsychologist';
+import SignupMotivationalSpeaker from './components/SignupMotivationalSpeaker';
+import SignupContentWriter from './components/SignupContentWriter';
    
 
 const appStackNavigator = createStackNavigator({
   // PatientSettingScreen:PatientSettingScreen
   Login: Login,
   registeredPatient: registeredPatient,
-
+SignupPsychologist:SignupPsychologist,
+SignupMotivationalSpeaker:SignupMotivationalSpeaker,
+SignupContentWriter:SignupContentWriter,
   adminDashboard:adminDashboard,
   patientDashboard: patientDashboard,
+  
   // patientHome: patientHome,
   SignupPatient: SignupPatient,
   SignupOptions: SignupOptions,

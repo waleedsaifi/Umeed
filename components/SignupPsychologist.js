@@ -24,7 +24,7 @@ const genderOptions = [
   { label: "Others", value: 2 },
 ];
 
-class SignupPatient extends Component {
+class SignupPsychologist extends Component {
   
   constructor() {
     super();
@@ -186,7 +186,7 @@ class SignupPatient extends Component {
           <Image style={styles.logo}
             source={require('./img/umeedLogo.png')} />
           <View style={styles.logoTextContainer}>
-            <Text style={styles.logoText}>PATIENT ACCOUNT  </Text>
+            <Text style={styles.logoText}>PSYCHOLOGIST ACCOUNT  </Text>
           </View>
         </View>
        
@@ -307,7 +307,7 @@ class SignupPatient extends Component {
           />
            <View style={styles.hammie}>
         <Button
-          title="Select Image"
+          title="Select Document"
           onPress={this._pickImage}
           style={{backgroundColor: 'lightblue'}}
         />
@@ -343,7 +343,7 @@ class SignupPatient extends Component {
   
 }
 
-export default SignupPatient;
+export default SignupPsychologist;
 
 const styles = StyleSheet.create({
 

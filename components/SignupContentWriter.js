@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TextInputMask } from 'react-native-masked-text'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import AwesomeAlert from 'react-native-awesome-alerts';
-import * as ImagePicker from 'expo-image-picker';
+// import * as ImagePicker from 'expo-image-picker';
 
 import {
   Text,
@@ -24,7 +24,7 @@ const genderOptions = [
   { label: "Others", value: 2 },
 ];
 
-class SignupPatient extends Component {
+class SignupContentWriter extends Component {
   
   constructor() {
     super();
@@ -60,6 +60,7 @@ class SignupPatient extends Component {
     },
     
   };
+ 
   myfun = () => {
     
     const { username, email, password, phone_number, gender, age,link, CNIC } = this.state;
@@ -144,7 +145,8 @@ class SignupPatient extends Component {
     
   }
 }
- 
+  
+
   pickDate = async()=>{
     try {
         const {action, year, month, day} = await DatePickerAndroid.open({
@@ -159,23 +161,24 @@ class SignupPatient extends Component {
       } catch ({code, message}) {
         console.warn('Cannot open date picker', message);
       }
-}
+};
 
-  _pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      aspect: [4, 3],
-      quality: 1
-    });
+//   _pickImage = async () => {
+//     let result = await ImagePicker.launchImageLibraryAsync({
+//       allowsEditing: true,
+//       mediaTypes: ImagePicker.MediaTypeOptions.All,
+//       aspect: [4, 3],
+//       quality: 1
+//     });
 
-    alert(result.uri);
-    console.log(result)
+//     alert(result.uri);
+//     console.log(result)
 
-    if (!result.cancelled) {
-      this.setState({ image: result.uri });
-    }
-  };
+//     if (!result.cancelled) {
+//       this.setState({ image: result.uri });
+//     }
+//   };
+
 
   render() {
     const { showAlert } = this.state;
@@ -186,7 +189,7 @@ class SignupPatient extends Component {
           <Image style={styles.logo}
             source={require('./img/umeedLogo.png')} />
           <View style={styles.logoTextContainer}>
-            <Text style={styles.logoText}>PATIENT ACCOUNT  </Text>
+            <Text style={styles.logoText}>CONTENT WRITER ACCOUNT  </Text>
           </View>
         </View>
        
@@ -305,15 +308,15 @@ class SignupPatient extends Component {
             labelHorizontal={false}
             buttonSize={10}
           />
-           <View style={styles.hammie}>
+           {/* <View style={styles.hammie}>
         <Button
-          title="Select Image"
+          title="Select Document"
           onPress={this._pickImage}
           style={{backgroundColor: 'lightblue'}}
         />
         {image &&
           <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-          </View>
+          </View> */}
 
           <TouchableOpacity style={styles.buttonContainer}>
             <Text style={styles.buttonText}
@@ -343,7 +346,7 @@ class SignupPatient extends Component {
   
 }
 
-export default SignupPatient;
+export default SignupContentWriter;
 
 const styles = StyleSheet.create({
 
@@ -409,12 +412,12 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     fontSize: 18,
   },
-  hammie: {
-    flex: 1,
-    backgroundColor: 'lightblue',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+//   hammie: {
+//     flex: 1,
+//     backgroundColor: 'lightblue',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
   date:{
     width:'65%',
     borderRadius:4,

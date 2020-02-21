@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
+
 
 class SignupOptions extends Component {
 
@@ -14,6 +16,7 @@ class SignupOptions extends Component {
             fontWeight: 'bold',
             marginHorizontal: '30%'
         },
+        
     };
 
     render() {
@@ -21,21 +24,41 @@ class SignupOptions extends Component {
             <View style={styles.container}>
                 <View style={styles.logoContainer}>
                     <Image style={styles.logo}
-                        source={require('./img/umeedLogo.png')} />
+                        source={require('./img/Umeed.png')} />
                 </View>
+                <MenuProvider style={{ flexDirection: "column", padding: 30 }}>
+                <Menu>
+                    <MenuTrigger>
+                        <Text style={styles.headerText}>= Signup</Text>
+                    </MenuTrigger>
+                    <MenuOptions>
+                        <MenuOption>
                 <TouchableOpacity style={styles.buttonContainer}
                     onPress={() => this.props.navigation.navigate('SignupPatient')}>
                     <Text style={styles.buttonText} >Sign Up as Patient</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonContainer}>
+                </MenuOption>
+                <MenuOption>
+                <TouchableOpacity style={styles.buttonContainer}
+                onPress={() => this.props.navigation.navigate('SignupPsychologist')}>
                     <Text style={styles.buttonText} >Sign Up as Psychologist</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonContainer}>
+                </MenuOption>
+                <MenuOption>
+                <TouchableOpacity style={styles.buttonContainer}
+                onPress={() => this.props.navigation.navigate('SignupMotivationalSpeaker')}>
                     <Text style={styles.buttonText} >Sign Up as Motivational Speaker</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonContainer}>
+                </MenuOption>
+                <MenuOption>
+                <TouchableOpacity style={styles.buttonContainer}
+                onPress={() => this.props.navigation.navigate('SignupContentWriter')}>
                     <Text style={styles.buttonText} >Sign Up as Content Writer</Text>
                 </TouchableOpacity>
+                </MenuOption>
+                </MenuOptions>
+                </Menu>
+                </MenuProvider>
             </View>
         );
     }
@@ -69,7 +92,14 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     logo: {
-        width: 100,
-        height: 100
-    }
+        width: 200,
+        height: 130
+    },
+    headerText: {
+        fontSize: 20,
+        margin: 10,
+        fontWeight: "bold",
+        color:"blue"
+        
+      }
 })
