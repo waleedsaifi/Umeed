@@ -85,6 +85,7 @@ class DetailsScreen extends React.Component {
 const RootStack = createStackNavigator(
 {
   Home: HomeScreen,
+  Homee: HomeScreen,
   Details: DetailsScreen
 },
 {
@@ -93,6 +94,7 @@ const RootStack = createStackNavigator(
 );
 
 const AppContainer = createAppContainer(RootStack);
+const AppDrum = createAppContainer(RootStack);
 
 export default class SignUp extends React.Component {
   // state = {
@@ -114,7 +116,8 @@ export default class SignUp extends React.Component {
   render() {
     return (
 
-      <AppContainer/>
+      <AppContainer/>,
+      <AppDrum/>
     );
 
   }
@@ -292,7 +295,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   DashboardScreen : {screen : AppDrawerNavigator } 
 }) ;
 const AppContainer = createAppContainer(AppSwitchNavigator);
-
+const AppDrum = createAppContainer(AppSwitchNavigator);
 
 class App extends Component {
   render() {

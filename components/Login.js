@@ -18,12 +18,14 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            userRole:'',
         }
     }
     myfun = () => {
         let loginInfo = {};
         loginInfo.email = this.state.email;
         loginInfo.password = this.state.password;
+        loginInfo.userRole= this.state.userRole;
 
         if( loginInfo.email== 'admin' && loginInfo.password=='admin')
         {
@@ -46,10 +48,26 @@ class Login extends Component {
                     if (response.error) {
                         this.setState({ error: "Invalid Email or Password" })
                     }
-                    else {
-                        //   console.warn('Success:', response);
-                        this.props.navigation.navigate('patientDashboard', { personInfo: response })
-                        // this.props.navigation.navigate('patientHome',{personInfo:  response })
+                    // else {
+                    //     //   console.warn('Success:', response);
+                    //     this.props.navigation.navigate('patientDashboard', { personInfo: response })
+                    //     // this.props.navigation.navigate('patientHome',{personInfo:  response })
+                    // }
+                    else if(response.userRole== 'patient')
+                    {
+                        this.props.navigation.navigate('patientDashboard', {personInfo: response});
+                    }
+                    else if(response.userRole=='psychologist')
+                    {
+                        this.props.navigation.navigate('psychologistDashboard', {personInfo: response});
+                    }
+                    else if(response.userRole=='motivationspeaker')
+                    {
+                        this.props.navigation.navigate('speakerDashboard', {personInfo: response});
+                    }
+                    else if(response.userRole=='contentwriter')
+                    {
+                        this.props.navigation.navigate('writerDashboard', {personInfo: response});
                     }
                 })
                 .catch(error => console.error('Error:', error));

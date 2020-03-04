@@ -13,8 +13,7 @@ import {
   TouchableOpacity,
   Button,
   image,
-  DatePickerAndroid,
-  EvilIcons 
+  DatePickerAndroid
 } from 'react-native'
 import RadioForm from 'react-native-simple-radio-button';
 
@@ -41,9 +40,9 @@ class SignupPatient extends Component {
       gender: -1,
       age: '',
       ageerr:'',
-      link:'',
       CNIC: '',
-      CNICerr:''
+      CNICerr:'',
+      userRole:''
     }
   }
   
@@ -62,7 +61,7 @@ class SignupPatient extends Component {
   };
   myfun = () => {
     
-    const { username, email, password, phone_number, gender, age,link, CNIC } = this.state;
+    const { username, email, password, phone_number, gender, age,link, CNIC,userRole } = this.state;
     
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ; 
     if(reg.test(email) === false) 
@@ -108,7 +107,7 @@ class SignupPatient extends Component {
     else { 
       this.setState({ passerr: "" })
     }
-    if (username == "" || password == '' || email == "" || phone_number == "" || age == "" || gender == -1 || link == "" || CNIC== "") {
+    if (username == "" || password == '' || email == "" || phone_number == "" || age == "" || gender == -1  || CNIC== "") {
       this.setState({ error: "" })
     }
     else {
@@ -120,9 +119,9 @@ class SignupPatient extends Component {
       signupInfo.name = this.state.username;
       signupInfo.email = this.state.email;
       signupInfo.password = this.state.password;
-      signupInfo.link = this.state.link;
       signupInfo.gender = this.state.gender;
-      signupInfo.joiningDate =new Date("<YYYY-mm-ddTHH:MM:ssZ>").getDate()
+      signupInfo.userRole='patient';
+      // signupInfo.joiningDate =new Date("<YYYY-mm-ddTHH:MM:ssZ>").getDate()
       // console.warn(signupInfo);
       // var url = 'http://89.89.89.43:5000/signup';  // Office
       // var url = 'http://192.168.0.108:5000/signup';  // Home 
@@ -281,13 +280,6 @@ class SignupPatient extends Component {
             onChangeText={password => this.setState({ password })}
           />
            <Text style ={{color:'red'} }>{this.state.passerr}</Text>
-           <TextInput
-            style={styles.input}
-            placeholder='Place The Link Of Content'
-            autoCapitalize="none"
-            placeholderTextColor='blue'
-            onChangeText={link => this.setState({ link})}
-          />
           <View style={styles.date}>
                     <Text style={styles.dateText}>{this.state.date} Date</Text>
                     <TouchableOpacity style={styles.dateButton} onPress={this.pickDate}>

@@ -43,7 +43,8 @@ class SignupMotivationalSpeaker extends Component {
       ageerr:'',
       link:'',
       CNIC: '',
-      CNICerr:''
+      CNICerr:'',
+      userRole:''
     }
   }
   
@@ -63,7 +64,7 @@ class SignupMotivationalSpeaker extends Component {
  
   myfun = () => {
     
-    const { username, email, password, phone_number, gender, age,link, CNIC } = this.state;
+    const { username, email, password, phone_number, gender, age,link, CNIC ,userRole} = this.state;
     
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ; 
     if(reg.test(email) === false) 
@@ -123,7 +124,8 @@ class SignupMotivationalSpeaker extends Component {
       signupInfo.password = this.state.password;
       signupInfo.link = this.state.link;
       signupInfo.gender = this.state.gender;
-      signupInfo.joiningDate =new Date("<YYYY-mm-ddTHH:MM:ssZ>").getDate()
+      signupInfo.userRole='motivationspeaker';
+      // signupInfo.joiningDate =new Date("<YYYY-mm-ddTHH:MM:ssZ>").getDate()
       // console.warn(signupInfo);
       // var url = 'http://89.89.89.43:5000/signup';  // Office
       // var url = 'http://192.168.0.108:5000/signup';  // Home 

@@ -4,6 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import AwesomeAlert from 'react-native-awesome-alerts';
 import * as ImagePicker from 'expo-image-picker';
 
+
 import {
   Text,
   View,
@@ -41,9 +42,9 @@ class SignupPsychologist extends Component {
       gender: -1,
       age: '',
       ageerr:'',
-      link:'',
       CNIC: '',
-      CNICerr:''
+      CNICerr:'',
+      userRole:''
     }
   }
   
@@ -62,12 +63,12 @@ class SignupPsychologist extends Component {
   };
   myfun = () => {
     
-    const { username, email, password, phone_number, gender, age,link, CNIC } = this.state;
+    const { username, email, password, phone_number, gender, age,link, CNIC,userRole } = this.state;
     
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ; 
     if(reg.test(email) === false) 
     {  
-    this.setState({ emailerr: "email@gmail.com" }) 
+    this.setState({ emailerr: "abc@gmail.com" }) 
     } 
     else { 
       this.setState({ emailerr: "" })
@@ -108,7 +109,7 @@ class SignupPsychologist extends Component {
     else { 
       this.setState({ passerr: "" })
     }
-    if (username == "" || password == '' || email == "" || phone_number == "" || age == "" || gender == -1 || link == "" || CNIC== "") {
+    if (username == "" || password == '' || email == "" || phone_number == "" || age == "" || gender == -1  || CNIC== "") {
       this.setState({ error: "" })
     }
     else {
@@ -120,9 +121,9 @@ class SignupPsychologist extends Component {
       signupInfo.name = this.state.username;
       signupInfo.email = this.state.email;
       signupInfo.password = this.state.password;
-      signupInfo.link = this.state.link;
       signupInfo.gender = this.state.gender;
-      signupInfo.joiningDate =new Date("<YYYY-mm-ddTHH:MM:ssZ>").getDate()
+      signupInfo.userRole='psychologist';
+      // signupInfo.joiningDate =new Date("<YYYY-mm-ddTHH:MM:ssZ>").getDate()
       // console.warn(signupInfo);
       // var url = 'http://89.89.89.43:5000/signup';  // Office
       // var url = 'http://192.168.0.108:5000/signup';  // Home 
@@ -160,21 +161,81 @@ class SignupPsychologist extends Component {
         console.warn('Cannot open date picker', message);
       }
 }
+// postImage = async (image) => {
+//   const photo = {
+//     uri: image.uri,
+//     type: "image/jpg",
+//     name: "photo.jpg",
+//   };
 
+//   const form = new FormData();
+
+//   form.append("test", photo);
+
+//   axios.post(
+//     "http://localhost:3000/" + "upload",photo,
+//     {
+//       body: form,
+//       headers: {
+//         'Content-Type': 'image/jpeg',
+//       }
+//     }
+//   )
+//   .then((responseData) => {
+//     console.log("Succes "+ responseData)
+//   })
+//   .catch((error) => {
+//     console.log("ERROR " + error)
+//   }); 
+// }
   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      aspect: [4, 3],
+      // allowsEditing: true,
+      // mediaTypes: ImagePicker.MediaTypeOptions.All,
+      // aspect: [4, 3],
       quality: 1
     });
+    
 
     alert(result.uri);
     console.log(result)
 
     if (!result.cancelled) {
+      // try {
+      //   await this.postImage(result);
+      // } catch (e) {
+      //   console.log(e);
+      // }
+
       this.setState({ image: result.uri });
     }
+      const config = {
+       method: 'POST',
+       headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data',
+       },
+       body: result,
+      };
+     fetch("http://localhost:3000/" + "upload", config)
+      .then((checkStatusAndGetJSONResponse)=>{       
+        console.log(checkStatusAndGetJSONResponse);
+      }).catch((err)=>{console.log(err)});
+
+     
+     
+  
+//     let upload = (result) => {
+//   return RNFetchBlob.fetch('POST', 'http://10.0.2.10:3000', {
+//     Authorization : "Bearer access-token",
+//     otherHeader : "foo",
+//     'Content-Type' : 'multipart/form-data',
+//   }, result);
+// }
+
+// module.exports = upload;
+
+     
   };
 
   render() {
@@ -281,13 +342,6 @@ class SignupPsychologist extends Component {
             onChangeText={password => this.setState({ password })}
           />
            <Text style ={{color:'red'} }>{this.state.passerr}</Text>
-           <TextInput
-            style={styles.input}
-            placeholder='Place The Link Of Content'
-            autoCapitalize="none"
-            placeholderTextColor='blue'
-            onChangeText={link => this.setState({ link})}
-          />
           <View style={styles.date}>
                     <Text style={styles.dateText}>{this.state.date} Date</Text>
                     <TouchableOpacity style={styles.dateButton} onPress={this.pickDate}>

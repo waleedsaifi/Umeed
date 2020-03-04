@@ -39,6 +39,7 @@ class patientDashboard extends React.Component {
     const personInffo = this.props.navigation.getParam('personInfo')
     return (
       <View style ={styles.Container}>
+        <Text style = {styles.Greeting}>patientDashboard{personInffo.name}</Text>
         <Text style = {styles.Greeting}>Hello Mr.{personInffo.name}</Text>
         <Text style = {styles.Greeting}>Joiing date: {personInffo.joiningDate}</Text>
       </View>
