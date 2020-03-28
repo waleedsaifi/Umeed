@@ -8,10 +8,10 @@ class SignupOptions extends Component {
     static navigationOptions = {
         title: "UMEED",
         headerStyle: {
-            backgroundColor: '#3498db',
+            backgroundColor: '#28a745',
 
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#343a40',
         headerTitleStyle: {
             fontWeight: 'bold',
             marginHorizontal: '30%'
@@ -29,7 +29,7 @@ class SignupOptions extends Component {
                 <MenuProvider style={{ flexDirection: "column", padding: 30 }}>
                 <Menu>
                     <MenuTrigger>
-                        <Text style={styles.headerText}>= Signup</Text>
+                        <Text style={styles.headerText}>** Signup</Text>
                     </MenuTrigger>
                     <MenuOptions>
                         <MenuOption>
@@ -76,13 +76,13 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginLeft: 20,
         marginRight: 20,
-        backgroundColor: '#3498db',
+        backgroundColor: '#28a745',
         paddingVertical: 15,
         marginBottom: 10,
         borderRadius: 14,
     },
     buttonText: {
-        color: 'white',
+        color: 'black',
         fontWeight: '900',
         textAlign: 'center'
     },
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         margin: 10,
         fontWeight: "bold",
-        color:"blue"
+        color:'#28a745'
         
       }
 })

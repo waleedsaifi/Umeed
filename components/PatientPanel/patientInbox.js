@@ -44,7 +44,7 @@ class patientInbox extends React.Component {
           onSubmitEditing={() => this.submitChatMessage()}
           onChangeText={chatMessage => {
           this.setState({ chatMessage });
-          }}
+          }} 
         />
         {/* <Text>{personInffo.name}</Text> */}
         {chatMessages}

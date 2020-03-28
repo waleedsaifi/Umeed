@@ -37,7 +37,7 @@ class SignupPsychologist extends Component {
       emailerr:'',
       password: '',
       passerr:'',
-      phone_number: '+92',
+      phone_number: '',
       phoneerr:'',
       gender: -1,
       age: '',
@@ -52,9 +52,9 @@ class SignupPsychologist extends Component {
     title: "UMEED",
     headerLeft: null,
     headerStyle: {
-      backgroundColor: '#3498db',
+      backgroundColor: '#28a745',
     },
-    headerTintColor: '#fff',
+    headerTintColor: 'black',
     headerTitleStyle: {
       fontWeight: 'bold',
       marginHorizontal: '40%'
@@ -259,8 +259,8 @@ class SignupPsychologist extends Component {
           </Text>
 
           <TextInputMask style={styles.input}
-            placeholder='Phone(92)'
-            placeholderTextColor="#fff"
+            placeholder='92'
+            placeholderTextColor="black"
             keyboardType='phone-pad'
             type={'custom'}
     
@@ -279,7 +279,7 @@ class SignupPsychologist extends Component {
           <TextInputMask style={styles.input}
           
             placeholder='CNIC'
-            placeholderTextColor="#FFF"
+            placeholderTextColor="black"
             keyboardType='phone-pad'
             type={'custom'}
             options={{
@@ -297,7 +297,7 @@ class SignupPsychologist extends Component {
 
           <TextInputMask style={styles.input}
             placeholder='Age'
-            placeholderTextColor="#FFF"
+            placeholderTextColor="black"
             keyboardType='phone-pad'
             type={'custom'}
             options={{
@@ -316,7 +316,7 @@ class SignupPsychologist extends Component {
             style={styles.input}
             placeholder='Username'
             autoCapitalize="none"
-            placeholderTextColor='white'
+            placeholderTextColor='black'
             onBlur={()=> this.myfun()}
             onChangeText={(text) => {this.setState({ username: text })}}
           />
@@ -326,7 +326,7 @@ class SignupPsychologist extends Component {
             style={styles.input}
             placeholder='Email'
             autoCapitalize="none"
-            placeholderTextColor='white'
+            placeholderTextColor='black'
              onBlur={()=> this.myfun()}
             onChangeText={(text) => {this.setState({ email: text })}}
             required
@@ -337,7 +337,7 @@ class SignupPsychologist extends Component {
             placeholder='Password'
             secureTextEntry={true}
             autoCapitalize="none"
-            placeholderTextColor='white'
+            placeholderTextColor='black'
             onBlur={()=> this.myfun()}
             onChangeText={password => this.setState({ password })}
           />
@@ -359,15 +359,16 @@ class SignupPsychologist extends Component {
             labelHorizontal={false}
             buttonSize={10}
           />
-           <View style={styles.hammie}>
-        <Button
-          title="Select Document"
-          onPress={this._pickImage}
-          style={{backgroundColor: 'lightblue'}}
-        />
+           
+           <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.buttonText}
+              onPress={() => this._pickImage()}
+            >SELECT DOCUMENT
+                   </Text>
+          </TouchableOpacity>
         {image &&
           <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-          </View>
+          
 
           <TouchableOpacity style={styles.buttonContainer}>
             <Text style={styles.buttonText}
@@ -384,7 +385,7 @@ class SignupPsychologist extends Component {
                         showCancelButton={false} showConfirmButton={true}
                         // cancelText="cancel"
                         confirmText="Back to Login"
-                        confirmButtonColor="#DD6B55"
+                        confirmButtonColor=""
                         // onCancelPressed={() => { this.hideAlert();}}
                         onConfirmPressed={() => { this.props.navigation.navigate('Login')}}
                     />
@@ -412,11 +413,11 @@ const styles = StyleSheet.create({
     width: 300,
     fontWeight: '500',
     height: 50,
-    backgroundColor: '#3498db',
+    backgroundColor: '#28a745',
     opacity: 0.5,
     marginBottom: 15,
     borderRadius: 10,
-    color: 'white',
+    color: 'black',
     paddingHorizontal: 10
   },
   genderText: {
@@ -424,12 +425,12 @@ const styles = StyleSheet.create({
     height: 55,
     marginLeft: 40,
     padding: 8,
-    color: '#3498db',
+    color: '#28a745',
     fontSize: 18,
     fontWeight: '500',
   },
   buttonContainer: {
-    backgroundColor: '#3498db',
+    backgroundColor: '#28a745',
     paddingVertical: 15,
     paddingHorizontal: 10,
     marginBottom: 10,
@@ -437,7 +438,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   buttonText: {
-    color: 'white',
+    color: 'black',
     fontWeight: '900',
     textAlign: 'center',
     borderRadius: 14,
@@ -459,27 +460,21 @@ const styles = StyleSheet.create({
     marginHorizontal: 10
   },
   logoText: {
-    color: '#3498db',
+    color: '#28a745',
     fontWeight: '900',
     fontSize: 18,
-  },
-  hammie: {
-    flex: 1,
-    backgroundColor: 'lightblue',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   date:{
     width:'65%',
     borderRadius:4,
     borderColor:'rgba(255,255,255,0.4)',
     borderWidth:1,
-    backgroundColor:'#3498db',
+    backgroundColor:'#28a745',
     marginVertical:10,
     flexDirection:"row",
     overflow:'hidden'
 },dateText:{
-    color:'white',
+    color:'black',
     // fontFamily:'open-sans',
     width:'80%',
     fontSize:14,
@@ -491,7 +486,7 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     flex:1
 },dateIcon:{
-  color:'#ffffff',
+  color:'black',
   fontSize:34,
 }
 });

@@ -1,8 +1,8 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 
-class updateAccount extends Component {
+class Setting extends Component {
     render() {
         const personInffo = this.props.navigation.getParam('personInfo')
         return (
@@ -13,7 +13,7 @@ class updateAccount extends Component {
             </View>
         );
     }
-} export default updateAccount;
+} export default Setting;
 
 const styles = StyleSheet.create({
 

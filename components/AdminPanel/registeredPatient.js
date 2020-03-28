@@ -48,14 +48,17 @@ class registeredPatient extends Component {
     sendPatientId(PatientInfo) {
         this.setState({
             showAlert: true,
+        
             deleteId: PatientInfo._id
         });
     }
+    
 
     onRefresh(){
         this.setState({refreshing:  true})
         this.getRegisteredPatient();   
     }
+
 
     deletePatient = () => {
         // alert(this.state.deleteId)
@@ -90,13 +93,21 @@ class registeredPatient extends Component {
             return (
                 <View>
                     <FlatList
+                   
+                      
                         data={this.state.data}
                         keyExtractor={item => item._id}
                         renderItem={({ item }) => (
+                          
+                              
                             <ListItem
+                          onPress={() => this.props.navigation.navigate('PatientProfile' ,{PatientInfo: item})}
+        
+                         
                                 roundAvator
                                 title={`${item.name}`}
                                 subtitle={`${item.email}`}
+                               
                                 leftAvatar={
                                     { source: require('../img/user_logo.png') }}
                                 rightIcon={
@@ -112,8 +123,7 @@ class registeredPatient extends Component {
                         // onRefresh = {this.getRegisteredPatient()}
                         onRefresh={this.onRefresh}
                     />
-
-                    <AwesomeAlert
+                  <AwesomeAlert
                         //  data={this.state.data}
                         show={showAlert} showProgress={false}
                         title="Alert" message="Are you sure to remove this Patient?"

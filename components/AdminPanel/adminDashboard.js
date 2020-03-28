@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image,ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, Image,ImageBackground,TouchableOpacity} from 'react-native';
+import {Ionicons,Entypo} from '@expo/vector-icons';
 import {Header , Left, Right, Icon, Container} from 'native-base'
 import { createDrawerNavigator, createAppContainer, DrawerItems } from 'react-navigation';
 import adminSettings from './adminSettings'
@@ -30,14 +31,42 @@ class adminDashboard extends React.Component {
   }
     render(){
       let { image } = this.state
-      return(   
-            <View  style={styles.container}>
-            <Text style={styles.Greeting} > Welcome {this.props.navigation.getParam('username')}</Text>
-            {/* <Image source = {{uri: this.state.image}} /> */}
-{/* 
-            <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-            <Text onPress = {this.selectPicture}> Upload</Text> */}
-            </View> 
+      return( 
+
+        <ImageBackground source={require('./../images/a.jpg')} style={{flex:9}}>
+      <View>
+      <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Dashboard</Text>
+      <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
+      <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
+      
+                 
+             <Image source={require('./../images/aa.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
+      <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {this.props.navigation.getParam('username')}</Text>
+      </View>
+      <View style={{flexDirection:'row',padding:20}}>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist_List')}>
+                  <Image source={require('./../images/pic1.jpg')} style={{width:150,height:100,padding:20}}></Image>
+                  <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+                  <Image source={require('./../images/pic3.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
+                  <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Write Success Story</Text>
+      </TouchableOpacity>
+      </View>
+      <View style={{flexDirection:'row',padding:20}}>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist_List')}>
+                  <Image source={require('./../images/pic2.png')} style={{width:150,height:100,padding:20}}></Image>
+                  <Text style={{color:'white',marginVertical:1}}>Video Chat</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+                  <Image source={require('./../images/pic4.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
+                  <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Feedback</Text>
+      </TouchableOpacity>
+      </View>
+        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'bold',fontSize:22}}>Never Lose Hope</Text>
+        </ImageBackground>
+    
+
       );
     }  
   }
@@ -64,6 +93,7 @@ class adminDashboard extends React.Component {
     DashBoard: adminDashboard,
     RegisteredPatient:registeredPatient,
     Settings: adminSettings
+  
   },{
       contentComponent: CustomDrawerComponent,
     },

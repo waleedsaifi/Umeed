@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Login from './components/Login';
-// import  from './components/Signup';
+
 import SignupOptions from './components/SignupOptions';
 import registeredPatient from './components/AdminPanel/registeredPatient'
-
-// import PatientSettingScreen from './PatientSettingScreen';
-
 import adminDashboard  from './components/AdminPanel/adminDashboard';
 import patientDashboard from './components/PatientPanel/patientDashboard';
-import psychologistDashboard from './components/PsychologistPanel/progressreport';
+import psychologistDashboard from './components/PsyPanel/psychologistDashboard';
 import speakerDashboard from './components/SpeakerPanel/speakerDashboard';
+import writerDashboard from './components/WriterPanel/writerDashboard';
 import SignupPatient from './components/SignupPatient';
 import SignupPsychologist from './components/SignupPsychologist';
 import SignupMotivationalSpeaker from './components/SignupMotivationalSpeaker';
 import SignupContentWriter from './components/SignupContentWriter';
+import PatientProfile from './components/PatientProfile';
+import Feedback from './components/Feedback';
+import Story from './components/Story';
    
 
 const appStackNavigator = createStackNavigator({
-   psychologistDashboard:psychologistDashboard,
+ 
   // PatientSettingScreen:PatientSettingScreen
   Login: Login,
   registeredPatient: registeredPatient,
@@ -27,8 +28,13 @@ const appStackNavigator = createStackNavigator({
   SignupContentWriter:SignupContentWriter,
   adminDashboard:adminDashboard,
   patientDashboard: patientDashboard,
-    
+  psychologistDashboard:psychologistDashboard,
+  PatientProfile:PatientProfile,
+  Feedback:Feedback,
+  Story:Story,
    speakerDashboard:speakerDashboard,
+   writerDashboard:writerDashboard,
+   
   // patientHome: patientHome,
   SignupPatient: SignupPatient,
   SignupOptions: SignupOptions,

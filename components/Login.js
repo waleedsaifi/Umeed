@@ -91,7 +91,7 @@ class Login extends Component {
                     placeholder="Email"
                     autoCapitalize="none"
                     onChangeText={email => this.setState({ email })}
-                    placeholderTextColor="#FFF" />
+                    placeholderTextColor="black" />
 
                 <TextInput
                     style={styles.input}
@@ -99,7 +99,7 @@ class Login extends Component {
                     secureTextEntry
                     placeholder="Password"
                     onChangeText={password => this.setState({ password })}
-                    placeholderTextColor="#FFF" />
+                    placeholderTextColor="black" />
 
                 <TouchableOpacity style={styles.buttonContainer}>
                     <Text style={styles.buttonText}
@@ -138,29 +138,29 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         marginRight: 15,
         height: 50,
-        backgroundColor: '#3498db',
+        backgroundColor: '#28a745',
         opacity: 0.5,
         marginBottom: 15,
         borderRadius: 14,
-        color: 'white',
+        color: 'black',
         paddingHorizontal: 10
 
     },buttonContainer: {
         marginLeft: 120,
         marginRight: 120,
-        backgroundColor: '#3498db',
+        backgroundColor: '#28a745',
         paddingVertical: 15,
         marginBottom: 270,
         borderRadius: 14,
 
     },buttonText: {
-        color: 'white',
+        color: 'black',
         fontWeight: '900',  
         textAlign: 'center',
         borderRadius: 14,
 
     },newAcoount: {
-        color: '#3498db',
+        color: '#343a40',
         marginHorizontal: '30%',
         fontWeight: "bold",
         marginBottom: 30,

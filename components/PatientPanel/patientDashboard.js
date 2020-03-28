@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet,Text, View, Image} from 'react-native';
+import { StyleSheet,Text, View, Image,ImageBackground,Card} from 'react-native';
+import {Ionicons,Entypo} from '@expo/vector-icons';
 import { SafeAreaView, ScrollView} from 'react-native'
 import { createDrawerNavigator, createAppContainer, DrawerItems } from 'react-navigation';
 import MotivationalVideos from './MotivationalVideos';
@@ -9,8 +10,10 @@ import {Header, Left, Right, Icon } from 'native-base';
 import PatientSettingScreen from './PatientSettingScreen';
 import patientPayments from './patientPayments';
 import patientInbox from './patientInbox';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class patientDashboard extends React.Component {
+  
   // static navigationOptions = {
 
   //   headerLeft:null,
@@ -27,22 +30,58 @@ class patientDashboard extends React.Component {
   //     fontWeight: 'bold',
   //   },
   // }
-//   constructor() {
-//     super();
-//     this.state = {
-//      username:'',
-//      imageURL: ''
-//     }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //    username:'',
+  //    imageURL: ''
+  //   }
   // }
   render() {
 
     const personInffo = this.props.navigation.getParam('personInfo')
     return (
-      <View style ={styles.Container}>
-        <Text style = {styles.Greeting}>patientDashboard{personInffo.name}</Text>
-        <Text style = {styles.Greeting}>Hello Mr.{personInffo.name}</Text>
-        <Text style = {styles.Greeting}>Joiing date: {personInffo.joiningDate}</Text>
-      </View>
+      
+        
+        <ImageBackground source={require('./../images/a.jpg')} style={{flex:9}}>
+        <View>
+        <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Dashboard</Text>
+        <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
+        <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
+        
+                   
+               <Image source={require('./../images/aa.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
+        <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {personInffo.name}</Text>
+        </View>
+        <View style={{flexDirection:'row',padding:20}}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist_List')}>
+                    <Image source={require('./../images/pic1.jpg')} style={{width:150,height:100,padding:20}}></Image>
+                    <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Story')}>
+                    <Image source={require('./../images/pic3.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
+                    <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Write Success Story</Text>
+        </TouchableOpacity>
+        </View>
+        <View style={{flexDirection:'row',padding:20}}>
+        <TouchableOpacity >
+                    <Image source={require('./../images/pic2.png')} style={{width:150,height:100,padding:20}}></Image>
+                    <Text style={{color:'white',marginVertical:1}}>Video Chat</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Feedback')}> 
+                    <Image source={require('./../images/pic4.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
+                    <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Feedback</Text>
+        </TouchableOpacity>
+  
+        </View>
+        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'bold',fontSize:22}}>Never Lose Hope</Text>
+        </ImageBackground>
+
+      // <View style ={styles.Container}>
+      //   <Text style = {styles.Greeting}>patientDashboard     {personInffo.name}</Text>
+      //   <Text style = {styles.Greeting}>Hello Mr.    {personInffo.name}</Text>
+        
+      // </View>
     );
 }
 }

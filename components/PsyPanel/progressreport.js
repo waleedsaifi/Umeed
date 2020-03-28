@@ -1,8 +1,8 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 
-class pyschologistInbox extends Component {
+class progressreport extends Component {
     render() {
         const personInffo = this.props.navigation.getParam('personInfo')
         return (
@@ -13,7 +13,7 @@ class pyschologistInbox extends Component {
             </View>
         );
     }
-} export default pyschologistInbox;
+} export default progressreport;
 
 const styles = StyleSheet.create({
 
