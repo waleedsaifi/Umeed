@@ -44,7 +44,7 @@ class adminDashboard extends React.Component {
       <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {this.props.navigation.getParam('username')}</Text>
       </View>
       <View style={{flexDirection:'row',padding:20}}>
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist_List')}>
+      <TouchableOpacity >
                   <Image source={require('./../images/pic1.jpg')} style={{width:150,height:100,padding:20}}></Image>
                   <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
       </TouchableOpacity>
@@ -54,7 +54,7 @@ class adminDashboard extends React.Component {
       </TouchableOpacity>
       </View>
       <View style={{flexDirection:'row',padding:20}}>
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist_List')}>
+      <TouchableOpacity >
                   <Image source={require('./../images/pic2.png')} style={{width:150,height:100,padding:20}}></Image>
                   <Text style={{color:'white',marginVertical:1}}>Video Chat</Text>
       </TouchableOpacity>
@@ -63,7 +63,7 @@ class adminDashboard extends React.Component {
                   <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Feedback</Text>
       </TouchableOpacity>
       </View>
-        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'bold',fontSize:22}}>Never Lose Hope</Text>
+        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Never Lose Hope</Text>
         </ImageBackground>
     
 

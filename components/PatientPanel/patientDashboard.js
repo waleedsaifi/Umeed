@@ -74,7 +74,7 @@ class patientDashboard extends React.Component {
         </TouchableOpacity>
   
         </View>
-        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'bold',fontSize:22}}>Never Lose Hope</Text>
+        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Never Lose Hope</Text>
         </ImageBackground>
 
       // <View style ={styles.Container}>

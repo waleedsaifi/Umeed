@@ -54,7 +54,7 @@ class psychologistDashboard extends React.Component {
         <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {personInffo.name}</Text>
         </View>
         <View style={{flexDirection:'row',padding:20}}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist_List')}>
+        <TouchableOpacity>
                     <Image source={require('./../images/pic1.jpg')} style={{width:150,height:100,padding:20}}></Image>
                     <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
         </TouchableOpacity>
@@ -74,7 +74,7 @@ class psychologistDashboard extends React.Component {
         </TouchableOpacity>
   
         </View>
-        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'bold',fontSize:22}}>Never Lose Hope</Text>
+        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Never Lose Hope</Text>
         </ImageBackground>
 
       // <View style ={styles.Container}>

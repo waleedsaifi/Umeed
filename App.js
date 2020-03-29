@@ -16,6 +16,7 @@ import SignupContentWriter from './components/SignupContentWriter';
 import PatientProfile from './components/PatientProfile';
 import Feedback from './components/Feedback';
 import Story from './components/Story';
+import Chat from './components/Chat';
    
 
 const appStackNavigator = createStackNavigator({
@@ -32,6 +33,7 @@ const appStackNavigator = createStackNavigator({
   PatientProfile:PatientProfile,
   Feedback:Feedback,
   Story:Story,
+  Chat:Chat,
    speakerDashboard:speakerDashboard,
    writerDashboard:writerDashboard,
    

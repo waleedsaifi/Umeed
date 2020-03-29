@@ -92,7 +92,7 @@ class Login extends Component {
                     autoCapitalize="none"
                     onChangeText={email => this.setState({ email })}
                     placeholderTextColor="black" />
-
+                    
                 <TextInput
                     style={styles.input}
                     autoCapitalize="none"
