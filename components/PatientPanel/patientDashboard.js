@@ -45,7 +45,7 @@ class patientDashboard extends React.Component {
         
         <ImageBackground source={require('./../images/a.jpg')} style={{flex:9}}>
         <View>
-        <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Dashboard</Text>
+        <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Patient Dashboard</Text>
         <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
         <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
         

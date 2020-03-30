@@ -33,14 +33,14 @@ class adminDashboard extends React.Component {
       let { image } = this.state
       return( 
 
-        <ImageBackground source={require('./../images/a.jpg')} style={{flex:9}}>
+        <ImageBackground source={require('./../images/background5.jpeg')} style={{flex:9}}>
       <View>
-      <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Dashboard</Text>
+      <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Admin Dashboard</Text>
       <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
       <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
       
                  
-             <Image source={require('./../images/aa.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
+             <Image source={require('./../images/admin.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
       <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {this.props.navigation.getParam('username')}</Text>
       </View>
       <View style={{flexDirection:'row',padding:20}}>
@@ -49,21 +49,21 @@ class adminDashboard extends React.Component {
                   <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-                  <Image source={require('./../images/pic3.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
-                  <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Write Success Story</Text>
+                  <Image source={require('./../images/pic5.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
+                  <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Patients</Text>
       </TouchableOpacity>
       </View>
       <View style={{flexDirection:'row',padding:20}}>
       <TouchableOpacity >
-                  <Image source={require('./../images/pic2.png')} style={{width:150,height:100,padding:20}}></Image>
-                  <Text style={{color:'white',marginVertical:1}}>Video Chat</Text>
+                  <Image source={require('./../images/pic6.jpg')} style={{width:150,height:100,padding:20}}></Image>
+                  <Text style={{color:'white',marginVertical:1}}>Content Writer</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-                  <Image source={require('./../images/pic4.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
-                  <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Feedback</Text>
+                  <Image source={require('./../images/pic7.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
+                  <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Motivational Speaker</Text>
       </TouchableOpacity>
       </View>
-        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Never Lose Hope</Text>
+        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>The Time Is:  NOW</Text>
         </ImageBackground>
     
 

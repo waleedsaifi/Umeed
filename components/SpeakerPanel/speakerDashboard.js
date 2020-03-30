@@ -42,46 +42,22 @@ class speakerDashboard extends React.Component {
     const personInffo = this.props.navigation.getParam('personInfo')
     return (
       
+      <ImageBackground source={require('./../images/background7.jpg')} style={{flex:9}}>
+      <View>
+      <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Speaker Dashboard</Text>
+      <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
+      <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
+      
+                 
+             <Image source={require('./../images/a3.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
+      <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {personInffo.name}</Text>
+      </View>
+      <Image source={require('./../images/pic11.jpg')}style={{ width:300, height:300, marginLeft: 28, marginTop: 10}} ></Image>
+    
+      <Text style={{color:'pink',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Great Things Never Came From COMFORT ZONE</Text>
+      </ImageBackground>
         
-        <ImageBackground source={require('./../images/a.jpg')} style={{flex:9}}>
-        <View>
-        <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Dashboard</Text>
-        <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
-        <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
         
-                   
-               <Image source={require('./../images/aa.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
-        <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {personInffo.name}</Text>
-        </View>
-        <View style={{flexDirection:'row',padding:20}}>
-        <TouchableOpacity >
-                    <Image source={require('./../images/pic1.jpg')} style={{width:150,height:100,padding:20}}></Image>
-                    <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-                    <Image source={require('./../images/pic3.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
-                    <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Write Success Story</Text>
-        </TouchableOpacity>
-        </View>
-        <View style={{flexDirection:'row',padding:20}}>
-        <TouchableOpacity >
-                    <Image source={require('./../images/pic2.png')} style={{width:150,height:100,padding:20}}></Image>
-                    <Text style={{color:'white',marginVertical:1}}>Video Chat</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-                    <Image source={require('./../images/pic4.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
-                    <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Feedback</Text>
-        </TouchableOpacity>
-  
-        </View>
-        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Never Lose Hope</Text>
-        </ImageBackground>
-
-      // <View style ={styles.Container}>
-      //   <Text style = {styles.Greeting}>patientDashboard     {personInffo.name}</Text>
-      //   <Text style = {styles.Greeting}>Hello Mr.    {personInffo.name}</Text>
-        
-      // </View>
     );
 }
 }

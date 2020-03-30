@@ -14,13 +14,7 @@ class Fire {
       projectId: 'umeed-e4dd9',
       storageBucket: 'umeed-e4dd9.appspot.com',
       messagingSenderId: '613712066749',
-      // apiKey: "AIzaSyAML7fJUPYeg_J7eO98YnI36JuO8m8vRRU",
-      // authDomain: "chatpot-39d14.firebaseapp.com",
-      // databaseURL: "https://chatpot-39d14.firebaseio.com",
-      // projectId: "chatpot-39d14",
-      // storageBucket: "",
-      // messagingSenderId: "161193445902",
- 
+  
     });
 
     observeAuth = () =>
