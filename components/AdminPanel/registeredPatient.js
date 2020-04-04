@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { Alert, View, Text, StyleSheet, ActivityIndicator,ImageBackground } from 'react-native';
 import { ListItem, Icon } from 'react-native-elements';
 import AwesomeAlert from 'react-native-awesome-alerts';
 import { FlatList } from 'react-native-gesture-handler';
@@ -91,8 +91,9 @@ class registeredPatient extends Component {
             );
         } else {
             return (
-                <View>
-                    <FlatList
+                
+                <View >
+                    <FlatList 
                    
                       
                         data={this.state.data}
@@ -135,6 +136,7 @@ class registeredPatient extends Component {
                         onConfirmPressed={() => { this.deletePatient();}}
                     />
                 </View>
+            
             );
         }
     }

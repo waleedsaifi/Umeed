@@ -1,20 +1,64 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity,StyleSheet,Dimensions,FlatList,Image,ImageBackground} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
+import { ListItem, Icon } from 'react-native-elements';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 const {width} = Dimensions.get('window');
 export default class PsychologistList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true,
+            data: [],
+            showAlert: false,
+            deleteId: '',
+            refreshing : false,
+        
+        }
+    }
+    componentDidMount() {
+        this.getRegisteredPatient();     
+    }
+
+    hideAlert = () => {
+        this.setState({
+            showAlert: false
+        });
+        this.getRegisteredPatient();
+    };
+
+    getRegisteredPatient(){
+        // var url = 'http://89.89.89.43:5000/signup';  // Office
+        // var url = 'http://192.168.0.108:5000/signup' // Home
+        // var url = 'http://192.168.43.21:5000/signup';   // Huawei Mate10 lite
+        var url = 'https://desolate-wave-36898.herokuapp.com/getAccount/Psychologists'  
+        return fetch(url)
+            .then(res => res.json())
+            .then((response) => {
+                this.setState({
+                    isLoading: false,
+                    data: response,
+                    refreshing:false
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     render() {
+       
         return (
             <ImageBackground source={require('./../images/background2.jpg')} style={{flex:9}}>
                 <View style={styles.top}>
                     <Text style={styles.title}>Psychologist</Text>
                 </View>
                 <FlatList 
-                    data={[{name:'Dr Zubair',Fee:'$ 100/hr',ratings:2,image:require('../images/profile.png')},{name:'Dr. Adnan',Fee:'$ 500/hr',ratings:4,image:require('../images/profile.png')},{name:'Dr. Zulfiqar',Fee:'$ 500/hr',ratings:4,image:require('../images/profile.png')},{name:'Dr. Rohma ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')},{name:'Dr. Ahad ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')},{name:'Dr. Anas ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')}]}
-                    keyExtractor={(item,index)=>{
-                        return ""+index;
-                    }}
+                   // data={[{name:'Dr Zubair',Fee:'$ 100/hr',ratings:2,image:require('../images/profile.png')},{name:'Dr. Adnan',Fee:'$ 500/hr',ratings:4,image:require('../images/profile.png')},{name:'Dr. Zulfiqar',Fee:'$ 500/hr',ratings:4,image:require('../images/profile.png')},{name:'Dr. Rohma ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')},{name:'Dr. Ahad ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')},{name:'Dr. Anas ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')}]}
+                   data={this.state.data} 
+                   keyExtractor={item => item._id}
+
                     style={{width:'100%'}}
                     renderItem={({item})=>{
                         let arrayToShow = ['md-star-outline','md-star-outline','md-star-outline','md-star-outline','md-star-outline'];
@@ -27,20 +71,27 @@ export default class PsychologistList extends Component {
                             );
                         });
                         return(
-                            <TouchableOpacity style={styles.button}>
-                                <Image style={styles.image} source={item.image}></Image>
+                            <TouchableOpacity style={styles.button}  onPress={() => this.props.navigation.navigate('PatientProfile' ,{PatientInfo: item})}>
+                                
+                                <Image source={require('../img/user_logo.png') }style={styles.image}></Image>
                                 <View style={{flex:1,justifyContent:"center"}}>
                                     <Text style={styles.name}>{item.name}</Text>
-                                    <Text style={styles.type}>{item.type}</Text>
+                                    <Text style={styles.type}>{item.email}</Text>
                                 </View>
                                 <View>
-                                    <Text style={styles.name}>{item.price}</Text>
-                                    <Text style={styles.ratings}>{stars}</Text>
+                                    <Text style={styles.name}>1000</Text>
+                                    <Text style={styles.ratings}>{stars}</Text> 
+                                
                                 </View>
+                               
                             </TouchableOpacity>
+                            
+                            
                         )
+                    
                     }}
                 ></FlatList>
+               
             </ImageBackground>
         )
     }

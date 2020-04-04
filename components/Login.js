@@ -53,19 +53,19 @@ class Login extends Component {
                     //     this.props.navigation.navigate('patientDashboard', { personInfo: response })
                     //     // this.props.navigation.navigate('patientHome',{personInfo:  response })
                     // }
-                    else if(response.userRole== 'patient')
+                    else if(response.userRole== 'Patient')
                     {
                         this.props.navigation.navigate('patientDashboard', {personInfo: response});
                     }
-                    else if(response.userRole=='psychologist')
+                    else if(response.userRole=='Psychologist')
                     {
                         this.props.navigation.navigate('psychologistDashboard', {personInfo: response});
                     }
-                    else if(response.userRole=='motivationspeaker')
+                    else if(response.userRole=='MotivationalSpeaker')
                     {
                         this.props.navigation.navigate('speakerDashboard', {personInfo: response});
                     }
-                    else if(response.userRole=='contentwriter')
+                    else if(response.userRole=='ContentWriter')
                     {
                         this.props.navigation.navigate('writerDashboard', {personInfo: response});
                     }

@@ -8,7 +8,8 @@ import updateAccount from './updateAccount';
 // import patientHome from './patientHome';
 import {Header, Left, Right, Icon } from 'native-base';
 import viewFeedback from './viewFeedback';
-import updatePrice from './updatePrice';
+
+
 import pyschologistInbox from './pyschologistInbox';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -54,11 +55,11 @@ class psychologistDashboard extends React.Component {
         <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {personInffo.name}</Text>
         </View>
         <View style={{flexDirection:'row',padding:20}}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Patients')}>
                     <Image source={require('./../images/pic5.jpg')} style={{width:150,height:100,padding:20}}></Image>
                     <Text style={{color:'white',marginVertical:1}}>Patients</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('ContactUs')}>
                     <Image source={require('./../images/pic8.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
                     <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Admin Contact</Text>
         </TouchableOpacity>
@@ -68,13 +69,13 @@ class psychologistDashboard extends React.Component {
                     <Image source={require('./../images/pic2.png')} style={{width:150,height:100,padding:20}}></Image>
                     <Text style={{color:'white',marginVertical:1}}>Video Chat</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Complaints')}>
                     <Image source={require('./../images/pic9.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
                     <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Complaint</Text>
         </TouchableOpacity>
   
         </View>
-        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>With The New Day Comes New Thoughts And Strength</Text>
+        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22,marginBottom:5}}>With The New Day Comes New Thoughts And Strength</Text>
         </ImageBackground>
 
       // <View style ={styles.Container}>
@@ -113,8 +114,8 @@ const AppDrawerNavigator = createDrawerNavigator({
   progress_report:progressreport,
   Inbox: pyschologistInbox,
   Account: updateAccount,
-  Update : updatePrice,
-  Feedback:viewFeedback
+ 
+  Feedbacks:viewFeedback
   
 },{
     contentComponent: CustomDrawerComponent,

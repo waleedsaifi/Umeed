@@ -61,20 +61,21 @@ class SignupPsychologist extends Component {
     },
     
   };
-  myfun = () => {
-    
-    const { username, email, password, phone_number, gender, age,link, CNIC,userRole } = this.state;
+  myfun1 = () => {
+    const { email } = this.state;
     
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ; 
     if(reg.test(email) === false) 
     {  
-    this.setState({ emailerr: "abc@gmail.com" }) 
+    this.setState({ emailerr: "email@gmail.com" }) 
     } 
     else { 
       this.setState({ emailerr: "" })
     }
-  
-      let seg = /^[a-zA-Z]+(([,. -][a-zA-Z ])?[a-zA-Z*])*$/ ; 
+  }
+  myfun2 = () => {
+  const { username} = this.state;
+  let seg = /^[a-zA-Z]+(([,. -][a-zA-Z ])?[a-zA-Z*])*$/ ; 
     if(seg.test(username) === false) 
       { 
       this.setState({ usererr: "Enter The name like: (john)" })
@@ -84,31 +85,48 @@ class SignupPsychologist extends Component {
         this.setState({ usererr: "" })
       
       }
-       if (phone_number.length <= '11') {
-        this.setState({ phoneerr: "Please Enter The Correct Number" })
-      }
-      else { 
-        this.setState({ phoneerr: "" })
-      }
+  }
+  myfun3 = () => {
+    const {  phone_number} = this.state;
+    
+    if (phone_number.length <= '11') {
+      this.setState({ phoneerr: "Please Enter The Correct Number" })
+    }
+    else { 
+      this.setState({ phoneerr: "" })
+    }
+    }
+    myfun4 = () => {
+      const { age} = this.state;
       if (age <= '15') {
         this.setState({ ageerr: "Age must be greater than 15" })
       }
       else { 
         this.setState({ ageerr: "" })
       }
-      if (CNIC.length <= '13') {
-        this.setState({ CNICerr: "Enter the 13 digit Valid CNIC" })
       }
-      else { 
-        this.setState({ CNICerr: "" })
-      }
+      myfun5 = () => {
+        const {  CNIC } = this.state;
+        if (CNIC.length <= '13') {
+          this.setState({ CNICerr: "Enter the 13 digit Valid CNIC" })
+        }
+        else { 
+          this.setState({ CNICerr: "" })
+        }
+        }
+        myfun6 = () => {
+          const { password} = this.state;
+          if (password.length <= '3') {
+            this.setState({ passerr: "Password Length Must be Greater Than 3" })
+          }
+          else { 
+            this.setState({ passerr: "" })
+          }
+          }
+  myfun = () => {
     
-      if (password.length <= '3') {
-      this.setState({ passerr: "Password Length Must be Greater Than 3" })
-    }
-    else { 
-      this.setState({ passerr: "" })
-    }
+    const { username, email, password, phone_number, gender, age,link, CNIC,userRole } = this.state;
+    
     if (username == "" || password == '' || email == "" || phone_number == "" || age == "" || gender == -1  || CNIC== "") {
       this.setState({ error: "" })
     }
@@ -122,7 +140,7 @@ class SignupPsychologist extends Component {
       signupInfo.email = this.state.email;
       signupInfo.password = this.state.password;
       signupInfo.gender = this.state.gender;
-      signupInfo.userRole='psychologist';
+      signupInfo.userRole='Psychologist';
       // signupInfo.joiningDate =new Date("<YYYY-mm-ddTHH:MM:ssZ>").getDate()
       // console.warn(signupInfo);
       // var url = 'http://89.89.89.43:5000/signup';  // Office
@@ -268,7 +286,7 @@ class SignupPsychologist extends Component {
               mask: '9999 9999999'
             }}
             value={this.state.phone_number}
-            onBlur={()=> this.myfun()}
+            onBlur={()=> this.myfun3()}
             onChangeText={text => {
               this.setState({
                 phone_number: text
@@ -286,7 +304,7 @@ class SignupPsychologist extends Component {
               mask: '99999-9999999-9'
             }}
             value={this.state.CNIC}
-            onBlur={()=> this.myfun()}
+            onBlur={()=> this.myfun5()}
             onChangeText={text => {
               this.setState({
                 CNIC: text
@@ -304,7 +322,7 @@ class SignupPsychologist extends Component {
               mask: '99'
             }}
             value={this.state.age}
-            onBlur={()=> this.myfun()}
+            onBlur={()=> this.myfun4()}
             onChangeText={text => {
               this.setState({
                 age: text
@@ -317,7 +335,7 @@ class SignupPsychologist extends Component {
             placeholder='Username'
             autoCapitalize="none"
             placeholderTextColor='black'
-            onBlur={()=> this.myfun()}
+            onBlur={()=> this.myfun2()}
             onChangeText={(text) => {this.setState({ username: text })}}
           />
  <Text style ={{color:'red'}}>{this.state.usererr}</Text>
@@ -327,7 +345,7 @@ class SignupPsychologist extends Component {
             placeholder='Email'
             autoCapitalize="none"
             placeholderTextColor='black'
-             onBlur={()=> this.myfun()}
+             onBlur={()=> this.myfun1()}
             onChangeText={(text) => {this.setState({ email: text })}}
             required
           />
@@ -338,7 +356,7 @@ class SignupPsychologist extends Component {
             secureTextEntry={true}
             autoCapitalize="none"
             placeholderTextColor='black'
-            onBlur={()=> this.myfun()}
+            onBlur={()=> this.myfun6()}
             onChangeText={password => this.setState({ password })}
           />
            <Text style ={{color:'red'} }>{this.state.passerr}</Text>

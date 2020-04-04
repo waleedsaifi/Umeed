@@ -7,7 +7,7 @@ class viewFeedback extends Component {
         const personInffo = this.props.navigation.getParam('personInfo')
         return (
             <View style={styles.container}>
-                <Text>Payment module is under construction</Text>
+                <Text>viewFeedback module is under construction</Text>
                 <Text> {personInffo.name} </Text>
                 <Text> {personInffo.contact} </Text>
             </View>

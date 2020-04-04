@@ -44,21 +44,21 @@ class adminDashboard extends React.Component {
       <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {this.props.navigation.getParam('username')}</Text>
       </View>
       <View style={{flexDirection:'row',padding:20}}>
-      <TouchableOpacity >
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist')} >
                   <Image source={require('./../images/pic1.jpg')} style={{width:150,height:100,padding:20}}></Image>
                   <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Patients')}>
                   <Image source={require('./../images/pic5.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
                   <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Patients</Text>
       </TouchableOpacity>
       </View>
       <View style={{flexDirection:'row',padding:20}}>
-      <TouchableOpacity >
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Writer')} >
                   <Image source={require('./../images/pic6.jpg')} style={{width:150,height:100,padding:20}}></Image>
                   <Text style={{color:'white',marginVertical:1}}>Content Writer</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Speaker')}>
                   <Image source={require('./../images/pic7.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
                   <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Motivational Speaker</Text>
       </TouchableOpacity>
@@ -91,7 +91,7 @@ class adminDashboard extends React.Component {
   
   const AppDrawerNavigator = createDrawerNavigator({
     DashBoard: adminDashboard,
-    RegisteredPatient:registeredPatient,
+    RegisteredUser:registeredPatient,
     Settings: adminSettings
   
   },{

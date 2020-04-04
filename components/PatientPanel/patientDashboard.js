@@ -64,7 +64,7 @@ class patientDashboard extends React.Component {
         </TouchableOpacity>
         </View>
         <View style={{flexDirection:'row',padding:20}}>
-        <TouchableOpacity >
+        <TouchableOpacity  onPress={() => this.props.navigation.navigate('VideoCallingApp')} >
                     <Image source={require('./../images/pic2.png')} style={{width:150,height:100,padding:20}}></Image>
                     <Text style={{color:'white',marginVertical:1}}>Video Chat</Text>
         </TouchableOpacity>

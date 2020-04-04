@@ -20,14 +20,9 @@ export default class PatientSettingScreen extends Component {
                         <MaterialCommunityIcons style={styles.icon} name='square-edit-outline'></MaterialCommunityIcons>
                     </View>
                 </TouchableOpacity> 
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Update Prices</Text>
-                    <View style={styles.center}>
-                        <MaterialCommunityIcons style={styles.icon} name='switch'></MaterialCommunityIcons>
-                    </View>
-                </TouchableOpacity> 
+                
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('ContactUs')}>
                     <Text style={styles.buttonText}>Contact</Text>
                     <View style={styles.center}>
                         <MaterialCommunityIcons style={styles.icon} name='md-information-circle-outline'></MaterialCommunityIcons>
@@ -35,14 +30,14 @@ export default class PatientSettingScreen extends Component {
                 </TouchableOpacity>
 
 
-                 <TouchableOpacity style={styles.button}>
+                 <TouchableOpacity style={styles.button}onPress={() => this.props.navigation.navigate('Help')}>
                     <Text style={styles.buttonText}>Help</Text>
                     <View style={styles.center}>
                         <MaterialCommunityIcons style={styles.icon} name='podcast'></MaterialCommunityIcons>
                     </View>
                 </TouchableOpacity>  
 
-                <TouchableOpacity style={styles.button} >
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Language')} >
                     <Text style={styles.buttonText}>Language</Text>
                     <View style={styles.center}>
                         <Entypo style={styles.icon} name='language'></Entypo>

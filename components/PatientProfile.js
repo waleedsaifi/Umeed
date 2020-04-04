@@ -9,7 +9,7 @@ class PatientProfile extends Component {
           <ImageBackground source={require('./../images/back.png')} style={{flex:9}}>
           <View>
           <Text style={{color:'white', fontSize:22, marginVertical:5}}>Profile</Text>  
-          <Image source={require('./../images/user.jpg')}style={{ width:200, height:200, marginLeft: 70, marginTop: 10,borderRadius:90}} ></Image>
+          <Image source={require('./../images/user.jpg')}style={{ width:200, height:200, marginLeft: 70, marginTop: 10,borderRadius:99}} ></Image>
           
           <Text style={{color:'#94C746', fontSize:20,marginVertical:3,textAlign:'center'}}>{personInffo.name}</Text>
           <Text style={{color:'black', fontSize:20,marginVertical:10}}>Email</Text>

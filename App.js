@@ -17,7 +17,15 @@ import PatientProfile from './components/PatientProfile';
 import Feedback from './components/Feedback';
 import Story from './components/Story';
 import Chat from './components/Chat';
-   
+import VideoCallingApp from './components/VideoCallingApp';
+import Psychologist from './Screens/Psychologist';  
+import Writer from './Screens/Writer'; 
+import Speaker from './Screens/Speaker'; 
+import Patients from './Screens/Patients';  
+import Complaints from './Screens/Complaints';   
+import Language from './Screens/Language';   
+import ContactUs from './Screens/ContactUs';  
+import Help from './Screens/Help';    
 
 const appStackNavigator = createStackNavigator({
  
@@ -26,6 +34,7 @@ const appStackNavigator = createStackNavigator({
   registeredPatient: registeredPatient,
   SignupPsychologist:SignupPsychologist,
   SignupMotivationalSpeaker:SignupMotivationalSpeaker,
+
   SignupContentWriter:SignupContentWriter,
   adminDashboard:adminDashboard,
   patientDashboard: patientDashboard,
@@ -34,9 +43,17 @@ const appStackNavigator = createStackNavigator({
   Feedback:Feedback,
   Story:Story,
   Chat:Chat,
+  Writer:Writer,
+  Speaker:Speaker,
+  Patients:Patients,
+  Language:Language,
+  ContactUs:ContactUs,
+  Help:Help,
    speakerDashboard:speakerDashboard,
    writerDashboard:writerDashboard,
-   
+   VideoCallingApp:VideoCallingApp,
+   Psychologist:Psychologist,
+   Complaints: Complaints,
   // patientHome: patientHome,
   SignupPatient: SignupPatient,
   SignupOptions: SignupOptions,
