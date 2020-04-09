@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import { Alert, View, Text, StyleSheet, ActivityIndicator, TouchableOpacity,Image,ImageBackground } from 'react-native';
 
 class PatientProfile extends Component {
+  static navigationOptions = {  
+    title: 'Umeed',  
+    headerStyle: {  
+        backgroundColor: '#28a745',
+    
+    },  
+    headerTintColor: 'black',  
+    headerTitleStyle: {  
+       fontWeight: 'bold',  
+       marginHorizontal: '40%',
+       
+    },  
+};  
     render() {
 
         const personInffo = this.props.navigation.getParam('PatientInfo')

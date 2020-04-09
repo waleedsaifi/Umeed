@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { Text, View, TouchableOpacity,StyleSheet,Dimensions,ImageBackground} from 'react-native';
 import {Ionicons,MaterialCommunityIcons,Entypo,FontAwesome} from '@expo/vector-icons';
 const {width} = Dimensions.get('window');
+import {Header , Left, Right, Icon, Container} from 'native-base'
 export default class adminSetting extends Component {
-  
+   
+         
     render() {
       
         return (

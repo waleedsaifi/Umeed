@@ -55,7 +55,7 @@ class SignupPatient extends Component {
     headerTintColor: 'black',
     headerTitleStyle: {
       fontWeight: 'bold',
-      marginHorizontal: '40%'
+      marginHorizontal: '40%',
     },
     
   };

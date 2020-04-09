@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet,Text, View, Image,ImageBackground,Card} from 'react-native';
 import {Ionicons,Entypo} from '@expo/vector-icons';
 import { SafeAreaView, ScrollView} from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient';
 import { createDrawerNavigator, createAppContainer, DrawerItems } from 'react-navigation';
 import MotivationalVideos from './MotivationalVideos';
 import PsychologistList from './PsychologistList';
@@ -41,47 +42,46 @@ class patientDashboard extends React.Component {
 
     const personInffo = this.props.navigation.getParam('personInfo')
     return (
-      
-        
-        <ImageBackground source={require('./../images/a.jpg')} style={{flex:9}}>
-        <View>
-        <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Patient Dashboard</Text>
-        <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
-        <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
-        
-                   
-               <Image source={require('./../images/aa.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
-        <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {personInffo.name}</Text>
-        </View>
-        <View style={{flexDirection:'row',padding:20}}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist_List')}>
-                    <Image source={require('./../images/pic1.jpg')} style={{width:150,height:100,padding:20}}></Image>
-                    <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
+      <View>
+      <ImageBackground source={require('./../images/b.jpg')} style={{ width:360, height:230,marginTop:0}}>
+  <View style={{flexDirection:'row'}}>
+  <TouchableOpacity onPress={this.props.navigation.openDrawer}>
+                <Ionicons style={styles.icon} name='md-menu'></Ionicons>
+            </TouchableOpacity>
+  <Text style={{color:'black', fontSize:20,marginVertical:1,marginLeft:80,fontWeight:'bold'}}>Patient Dashboard</Text>
+  <Entypo style={{marginLeft:65,color:'red',fontSize:22,marginVertical:1} } name='log-out' ></Entypo>
+  </View>
+  <Text style={{color:'black', fontSize:16,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
+  
+  
+         <Image source={require('./../images/aa.jpg')}style={{ width:88, height:88, marginLeft: 30, marginTop: 10,borderRadius:99}} ></Image>
+  <Text style={{color:'black', fontSize:22,marginVertical:3,textAlign:'center',fontWeight:'bold'}}> Welcome {personInffo.name}</Text>
+  </ImageBackground>
+  <TouchableOpacity activeOpacity={0.6} style={styles.container1} >
+            <LinearGradient start={[0, 1]} end={[1, 0]} style={styles.gradient} colors={['#28a745','#28a745']}>
+                <Text style={styles.text}>Motivational Content</Text>
+            </LinearGradient>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Story')}>
-                    <Image source={require('./../images/pic3.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
-                    <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Write Success Story</Text>
+        <TouchableOpacity activeOpacity={0.6} style={styles.container1} onPress={() => this.props.navigation.navigate('VideoCallingApp')}>
+            <LinearGradient start={[0, 1]} end={[1, 0]} style={styles.gradient} colors={['#28a745','#28a745']}>
+                <Text style={styles.text}>Video Chat</Text>
+            </LinearGradient>
         </TouchableOpacity>
-        </View>
-        <View style={{flexDirection:'row',padding:20}}>
-        <TouchableOpacity  onPress={() => this.props.navigation.navigate('VideoCallingApp')} >
-                    <Image source={require('./../images/pic2.png')} style={{width:150,height:100,padding:20}}></Image>
-                    <Text style={{color:'white',marginVertical:1}}>Video Chat</Text>
+        <TouchableOpacity activeOpacity={0.6} style={styles.container1} onPress={() => this.props.navigation.navigate('Story')}>
+            <LinearGradient start={[0, 1]} end={[1, 0]} style={styles.gradient} colors={['#28a745','#28a745']}>
+                <Text style={styles.text}>Write Success Story</Text>
+            </LinearGradient>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Feedback')}> 
-                    <Image source={require('./../images/pic4.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
-                    <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Feedback</Text>
+        <TouchableOpacity activeOpacity={0.6} style={styles.container1} onPress={() => this.props.navigation.navigate('Feedback')}>
+            <LinearGradient start={[0, 1]} end={[1, 0]} style={styles.gradient} colors={['#28a745','#28a745']}>
+                <Text style={styles.text}>Feedback</Text>
+            </LinearGradient>
         </TouchableOpacity>
   
-        </View>
-        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Never Lose Hope</Text>
-        </ImageBackground>
-
-      // <View style ={styles.Container}>
-      //   <Text style = {styles.Greeting}>patientDashboard     {personInffo.name}</Text>
-      //   <Text style = {styles.Greeting}>Hello Mr.    {personInffo.name}</Text>
+        <Text style={{color:'#28a745',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Never Lose Hope</Text>
+    </View>
         
-      // </View>
+       
     );
 }
 }
@@ -91,7 +91,7 @@ class patientDashboard extends React.Component {
 const CustomDrawerComponent = (props) => (
 
   <SafeAreaView style={{ flex: 1 }}>
-    <View style={{ height: 150, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ height: 150, backgroundColor: '#2e8b57', alignItems: 'center', justifyContent: 'center' }}>
    
       <Image source={require('../img/user_logo.png')}
         style={{ height: 120, width: 120, borderRadius: 60 }} />
@@ -101,11 +101,12 @@ const CustomDrawerComponent = (props) => (
     </View>
    
 
-    <ScrollView>
-    <Text style = {{marginLeft:0}}>{props.navigation.getParam('personInfo').name}</Text>
+    <ScrollView style={{backgroundColor:'#faebd7'}}>
+    <Text style = {{textAlign:'center',fontSize:20,fontWeight:'bold',marginTop:10,marginBottom:10}}>{props.navigation.getParam('personInfo').name}</Text>
       <DrawerItems {...props}></DrawerItems>
     </ScrollView>
   </SafeAreaView>
+  
 )
 
 const AppDrawerNavigator = createDrawerNavigator({
@@ -132,12 +133,32 @@ const styles = StyleSheet.create({
     alignItems:'center',
     // color: 'blue'
 },
-  Greeting: {
-    fontSize: 20,
-    fontWeight: '900',
-    // alignContent: 'center',
-    // alignItems: 'centre'
-
-  }
+Greeting: {
+  fontSize: 20,
+  fontWeight: '900',
+},
+gradient:{
+  width:'100%',
+  paddingVertical:15,
+  alignItems:"center",
+  justifyContent:"center",
+  borderRadius:30
+},text:{
+  fontWeight:"bold",
+  fontSize:14,
+  color:'#ffffff',
+  
+}, container1:{
+width:'80%',
+marginVertical:15,
+borderRadius:30,
+marginTop:25,
+marginLeft:30
+},
+icon:{
+fontSize:30,
+color:'black',
+marginLeft:10
+}
 })
 

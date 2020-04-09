@@ -25,7 +25,8 @@ import Patients from './Screens/Patients';
 import Complaints from './Screens/Complaints';   
 import Language from './Screens/Language';   
 import ContactUs from './Screens/ContactUs';  
-import Help from './Screens/Help';    
+import Help from './Screens/Help'; 
+import Psypatient from './Screens/Psypatient';    
 
 const appStackNavigator = createStackNavigator({
  
@@ -49,6 +50,7 @@ const appStackNavigator = createStackNavigator({
   Language:Language,
   ContactUs:ContactUs,
   Help:Help,
+  Psypatient:Psypatient,
    speakerDashboard:speakerDashboard,
    writerDashboard:writerDashboard,
    VideoCallingApp:VideoCallingApp,

@@ -41,22 +41,28 @@ class speakerDashboard extends React.Component {
 
     const personInffo = this.props.navigation.getParam('personInfo')
     return (
-      
-      <ImageBackground source={require('./../images/background7.jpg')} style={{flex:9}}>
       <View>
-      <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Speaker Dashboard</Text>
-      <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
-      <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
-      
-                 
-             <Image source={require('./../images/a3.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
-      <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {personInffo.name}</Text>
-      </View>
-      <Image source={require('./../images/pic11.jpg')}style={{ width:300, height:300, marginLeft: 28, marginTop: 10}} ></Image>
-    
-      <Text style={{color:'pink',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>Great Things Never Came From COMFORT ZONE</Text>
-      </ImageBackground>
-        
+      <ImageBackground source={require('./../images/background9.jpg')} style={{ width:360, height:230,marginTop:0}}>
+  <View style={{flexDirection:'row'}}>
+  <TouchableOpacity onPress={this.props.navigation.openDrawer}>
+                <Ionicons style={styles.icon} name='md-menu'></Ionicons>
+            </TouchableOpacity>
+  <Text style={{color:'black', fontSize:20,marginVertical:1,marginLeft:60,fontWeight:'bold'}}>Speaker Dashboard</Text>
+  <Entypo style={{marginLeft:65,color:'red',fontSize:22,marginVertical:1} } name='log-out' ></Entypo>
+  </View>
+  <Text style={{color:'black', fontSize:16,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
+  
+  
+         <Image source={require('./../images/a3.jpg')}style={{ width:88, height:88, marginLeft: 30, marginTop: 10,borderRadius:99}} ></Image>
+  <Text style={{color:'black', fontSize:22,marginVertical:3,textAlign:'center',fontWeight:'bold'}}> Welcome {personInffo.name}</Text>
+  </ImageBackground>
+  
+  <View style={{backgroundColor:'#d3d3d3'}}>
+  <Text style={{color:'black',marginVertical:5,fontSize:18,marginLeft:10,marginTop:10}}>Activity</Text>
+  <Image source={require('./../images/pic7.jpg')}style={{ width:300, height:330, marginLeft: 30, marginTop: 10,}} ></Image>
+      <Text style={{color:'#28a745',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22,fontWeight:'bold',marginTop:10}}>Great Things Never Came From COMFORT ZONE</Text>
+    </View>
+    </View>
         
     );
 }
@@ -67,7 +73,7 @@ class speakerDashboard extends React.Component {
 const CustomDrawerComponent = (props) => (
 
   <SafeAreaView style={{ flex: 1 }}>
-    <View style={{ height: 150, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ height: 150, backgroundColor: '#2e8b57', alignItems: 'center', justifyContent: 'center' }}>
    
       <Image source={require('../img/user_logo.png')}
         style={{ height: 120, width: 120, borderRadius: 60 }} />
@@ -77,8 +83,8 @@ const CustomDrawerComponent = (props) => (
     </View>
    
 
-    <ScrollView>
-    <Text style = {{marginLeft:0}}>{props.navigation.getParam('personInfo').name}</Text>
+    <ScrollView style={{backgroundColor:'#faebd7'}}>
+    <Text style = {{textAlign:'center',fontSize:20,fontWeight:'bold',marginTop:10,marginBottom:10}}>{props.navigation.getParam('personInfo').name}</Text>
       <DrawerItems {...props}></DrawerItems>
     </ScrollView>
   </SafeAreaView>
@@ -86,11 +92,11 @@ const CustomDrawerComponent = (props) => (
 
 const AppDrawerNavigator = createDrawerNavigator({
   Home: speakerDashboard,
-  deleteVideos:deleteVideos,
-  uploadVideos: uploadVideos,
+  Delete_Videos:deleteVideos,
+  Upload_Videos: uploadVideos,
   Earning: viewEarning,
-  Feedbackvideos : viewFeedbackvideos,
-  Settings:Settingspeaker 
+  Feedback_videos : viewFeedbackvideos,
+  Setting:Settingspeaker 
   
 },{
     contentComponent: CustomDrawerComponent,
@@ -108,12 +114,33 @@ const styles = StyleSheet.create({
     alignItems:'center',
     // color: 'blue'
 },
-  Greeting: {
-    fontSize: 20,
-    fontWeight: '900',
-    // alignContent: 'center',
-    // alignItems: 'centre'
-
-  }
+Greeting: {
+  fontSize: 20,
+  fontWeight: '900',
+},
+gradient:{
+  width:'100%',
+  paddingVertical:15,
+  alignItems:"center",
+  justifyContent:"center",
+  borderRadius:30
+},text:{
+  fontWeight:"bold",
+  fontSize:14,
+  color:'#ffffff',
+  
+}, container1:{
+width:'80%',
+marginVertical:15,
+borderRadius:30,
+marginTop:25,
+marginLeft:30
+},
+icon:{
+fontSize:30,
+color:'black',
+marginLeft:10
+}
+  
 })
 

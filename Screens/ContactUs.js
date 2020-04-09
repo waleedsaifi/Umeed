@@ -7,6 +7,19 @@ import { Textarea } from 'native-base';
 
 const {width} = Dimensions.get('window');
 export default class ContactUs extends Component {
+    static navigationOptions = {  
+        title: 'Umeed',  
+        headerStyle: {  
+            backgroundColor: '#28a745',
+        
+        },  
+        headerTintColor: 'black',  
+        headerTitleStyle: {  
+           fontWeight: 'bold',  
+           marginHorizontal: '30%',
+           
+        },  
+    };  
     state={
         name:'',
         email:'',
@@ -19,9 +32,12 @@ export default class ContactUs extends Component {
     }
     render() {
         return (
-            <ImageBackground source={require('././images/background8.jpg')} style={{flex:9}}>
-                    <Text style={{color:'black',fontSize:22,textAlign:'center'}}>Contact Us</Text>
-                    <Image source={require('././images/pic21.jpg')}style={{ width:300, height:200,marginLeft:30,marginBottom:30,marginTop:30}} ></Image>
+            <View>
+            <ImageBackground source={require('././images/pic21.jpg')} style={{ width:360, height:230,marginTop:0,backgroundColor:'transparent',}}>
+            <Text style={{color:'white', fontSize:22,marginVertical:3,textAlign:'center',fontWeight:'bold'}}> Contact Us</Text>
+            </ImageBackground>
+                    
+                  
                 <TextInput value={this.state.name} onChangeText={(text)=>{this.changeHandler('name',text)}} placeholderTextColor='black' style={styles.input} placeholder='Name'></TextInput>
                 <TextInput value={this.state.email} onChangeText={(text)=>{this.changeHandler('email',text)}} placeholderTextColor='black' style={styles.input} placeholder='Email'></TextInput>
                 <Textarea  style={styles.input1}
@@ -32,7 +48,7 @@ export default class ContactUs extends Component {
             >SUBMIT
                    </Text>
           </TouchableOpacity>
-            </ImageBackground>
+          </View>
         )
     }
 }
@@ -48,6 +64,8 @@ const styles = StyleSheet.create({
         color: 'black',
         paddingHorizontal: 10,
         marginLeft:30,
+        borderWidth:1,
+        marginTop:20
         
       },
       input1: {
@@ -61,8 +79,8 @@ const styles = StyleSheet.create({
         color: 'black',
         paddingHorizontal: 10,
         marginLeft:30,
-        
-        
+        borderWidth:1,
+        marginTop:20
       },
       buttonContainer: {
         marginLeft: 120,

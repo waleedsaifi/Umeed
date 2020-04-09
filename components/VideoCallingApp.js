@@ -345,14 +345,25 @@ import { View, Text, StyleSheet } from 'react-native';
 
 
 class VideoCallingApp extends Component {
+    static navigationOptions = {  
+        title: 'Umeed',  
+        headerStyle: {  
+            backgroundColor: '#28a745',
+        
+        },  
+        headerTintColor: 'black',  
+        headerTitleStyle: {  
+           fontWeight: 'bold',  
+           marginHorizontal: '30%',
+           
+        },  
+    };
     render() {
         
         return (
             <View style={styles.container}>
                 <Text>Video module is under construction</Text>
-                <Text> {personInffo.name} </Text>
-                <Text> {personInffo.contact} </Text>
-            </View>
+                </View>
         );
     }
 } export default VideoCallingApp;

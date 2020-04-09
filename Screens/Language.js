@@ -3,6 +3,19 @@ import { Text, View, TouchableOpacity,StyleSheet,Dimensions,ImageBackground} fro
 
 const {width} = Dimensions.get('window');
 export default class Language extends Component {
+    static navigationOptions = {  
+        title: 'Umeed',  
+        headerStyle: {  
+            backgroundColor: '#28a745',
+        
+        },  
+        headerTintColor: 'black',  
+        headerTitleStyle: {  
+           fontWeight: 'bold',  
+           marginHorizontal: '30%',
+           
+        },  
+    };  
     render() {
         return (
             <ImageBackground source={require('././images/background8.jpg')} style={{flex:9}}>

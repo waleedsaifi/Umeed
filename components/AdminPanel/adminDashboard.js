@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image,ImageBackground,TouchableOpacity} from 'react-native';
 import {Ionicons,Entypo} from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import {Header , Left, Right, Icon, Container} from 'native-base'
 import { createDrawerNavigator, createAppContainer, DrawerItems } from 'react-navigation';
 import adminSettings from './adminSettings'
@@ -9,6 +10,7 @@ import { SafeAreaView, ScrollView} from 'react-native'
 // import {ImagePicker} from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
+
 class adminDashboard extends React.Component {
   // static navigationOptions = {
   //   header : null   
@@ -16,7 +18,6 @@ class adminDashboard extends React.Component {
   state = {
     image: '../img/umeedLogo.png'
   };
-
   selectPicture = async() =>{
     let result = await ImagePicker.launchImageLibraryAsync({
       allowEditing : true,
@@ -29,42 +30,48 @@ class adminDashboard extends React.Component {
       this.setState({ image: result.uri});
     }
   }
+
     render(){
       let { image } = this.state
       return( 
-
-        <ImageBackground source={require('./../images/background5.jpeg')} style={{flex:9}}>
-      <View>
-      <Text style={{color:'white', fontSize:20,marginVertical:1,textAlign:'center'}}>Admin Dashboard</Text>
-      <Entypo style={{marginLeft:335,color:'red',fontSize:16}} name='log-out' ></Entypo>
-      <Text style={{color:'white', fontSize:16,marginVertical:0,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
+        <View>
+          <ImageBackground source={require('./../images/background9.jpg')} style={{ width:360, height:230,marginTop:0}}>
+      <View style={{flexDirection:'row'}}>
+      <TouchableOpacity onPress={this.props.navigation.openDrawer}>
+                    <Ionicons style={styles.icon} name='md-menu'></Ionicons>
+                </TouchableOpacity>
+      <Text style={{color:'black', fontSize:20,marginVertical:1,marginLeft:80}}>Admin Dashboard</Text>
+      <Entypo style={{marginLeft:65,color:'red',fontSize:22,marginVertical:1} } name='log-out' ></Entypo>
+      </View>
+      <Text style={{color:'black', fontSize:16,textAlign:'right'}}onPress={() => this.props.navigation.navigate('Login')}>logout</Text>
       
-                 
-             <Image source={require('./../images/admin.jpg')}style={{ width:200, height:200, marginLeft: 73, marginTop: 0,borderRadius:99}} ></Image>
+      
+             <Image source={require('./../images/admin.jpg')}style={{ width:88, height:88, marginLeft: 30, marginTop: 10,borderRadius:99}} ></Image>
       <Text style={{color:'white', fontSize:20,marginVertical:3,textAlign:'center'}}> Welcome {this.props.navigation.getParam('username')}</Text>
-      </View>
-      <View style={{flexDirection:'row',padding:20}}>
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('Psychologist')} >
-                  <Image source={require('./../images/pic1.jpg')} style={{width:150,height:100,padding:20}}></Image>
-                  <Text style={{color:'white',marginVertical:1}}>Psychologist</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('Patients')}>
-                  <Image source={require('./../images/pic5.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
-                  <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Patients</Text>
-      </TouchableOpacity>
-      </View>
-      <View style={{flexDirection:'row',padding:20}}>
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('Writer')} >
-                  <Image source={require('./../images/pic6.jpg')} style={{width:150,height:100,padding:20}}></Image>
-                  <Text style={{color:'white',marginVertical:1}}>Content Writer</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('Speaker')}>
-                  <Image source={require('./../images/pic7.jpg')} style={{width:150,height:100,padding:20,marginLeft:10}}></Image>
-                  <Text style={{color:'white',marginVertical:1,marginLeft:10}}>Motivational Speaker</Text>
-      </TouchableOpacity>
-      </View>
-        <Text style={{color:'white',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>The Time Is:  NOW</Text>
-        </ImageBackground>
+      </ImageBackground>
+      <TouchableOpacity activeOpacity={0.6} style={styles.container1} onPress={() => this.props.navigation.navigate('Patients')}>
+                <LinearGradient start={[0, 1]} end={[1, 0]} style={styles.gradient} colors={['#28a745','#28a745']}>
+                    <Text style={styles.text}>Patients</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.6} style={styles.container1} onPress={() => this.props.navigation.navigate('Psychologist')}>
+                <LinearGradient start={[0, 1]} end={[1, 0]} style={styles.gradient} colors={['#28a745','#28a745']}>
+                    <Text style={styles.text}>Psychologists</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.6} style={styles.container1} onPress={() => this.props.navigation.navigate('Writer')}>
+                <LinearGradient start={[0, 1]} end={[1, 0]} style={styles.gradient} colors={['#28a745','#28a745']}>
+                    <Text style={styles.text}>Content Writers</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.6} style={styles.container1} onPress={() => this.props.navigation.navigate('Speaker')}>
+                <LinearGradient start={[0, 1]} end={[1, 0]} style={styles.gradient} colors={['#28a745','#28a745']}>
+                    <Text style={styles.text}>Motivational Speaker</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+      
+        <Text style={{color:'green',marginVertical:1,textAlign:'center',fontStyle:'italic',fontSize:22}}>The Time Is:  NOW</Text>
+        </View>
     
 
       );
@@ -91,8 +98,8 @@ class adminDashboard extends React.Component {
   
   const AppDrawerNavigator = createDrawerNavigator({
     DashBoard: adminDashboard,
-    RegisteredUser:registeredPatient,
-    Settings: adminSettings
+    Motivational_Videos:registeredPatient,
+    Writting_Content: adminSettings
   
   },{
       contentComponent: CustomDrawerComponent,
@@ -118,5 +125,28 @@ class adminDashboard extends React.Component {
   Greeting: {
     fontSize: 20,
     fontWeight: '900',
-  }
+  },
+  gradient:{
+    width:'100%',
+    paddingVertical:15,
+    alignItems:"center",
+    justifyContent:"center",
+    borderRadius:30
+},text:{
+    fontWeight:"bold",
+    fontSize:14,
+    color:'#ffffff',
+    
+}, container1:{
+  width:'80%',
+  marginVertical:15,
+  borderRadius:30,
+  marginTop:25,
+  marginLeft:30
+},
+icon:{
+  fontSize:30,
+  color:'black',
+  marginLeft:10
+}
 });

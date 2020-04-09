@@ -1,169 +1,73 @@
-import React, { Component } from 'react';
-import { Button, ImageBackground, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import { Platform } from 'react-native';
+import React, { PureComponent } from 'react';
+import { View, Text, StyleSheet,FlatList,Image,TouchableOpacity } from 'react-native';
 
-// import keyboard spacer so Android keyboard doesn't hide message input field
-import KeyboardSpacer from 'react-native-keyboard-spacer';
-
-export default class pyscholoistInbox extends Component {
-     
-  constructor(props) {
-    super(props);
-    this.state={ 
-        name: '',
-        bColor: '#090C08', // default background color for chat screen
-    }
-  }
+class pyschologistInbox extends PureComponent {
+  static navigationOptions = () => ({
+    headerTitle: (
+      <Text style={{ fontWeight: 'bold' }}>Awesome Conversations</Text>
+    ),
+  });
 
   render() {
     return (
-        <View style={styles.container}>
-            <ImageBackground 
-                style={styles.background}
-                source={require('./../images/background4.png')}
-               
-                >
-                    <Text style={styles.title}>Let's Chat</Text>
-            <KeyboardAvoidingView
-                style={styles.startBox}
-                behavior = 'padding'
-                enabled >
-                <TextInput
-                style={styles.textInput}
-                onChangeText={(name)=>{this.setState({name})}}
-                value={this.state.name}
-                placeholder='Your Name'
-                />
-                
-                <Text style={styles.colorBox}>Choose Background Color:</Text>
-                <View style={styles.colorBox}>              
-                    <TouchableOpacity 
-                        style={(this.state.bColor==='#090C08') 
-                        ? [styles.colorCircles, styles.circle1, styles.selected]
-                        : [styles.colorCircles, styles.circle1]}
-                        onPress={()=>{this.setState({bColor:'#090C08'})}}
-                    ></TouchableOpacity>
-                   <TouchableOpacity 
-                        style={(this.state.bColor==='#474056') 
-                        ? [styles.colorCircles, styles.circle2, styles.selected]
-                        : [styles.colorCircles, styles.circle2]}
-                        onPress={()=>{this.setState({bColor:'#474056'})}}
-                    ></TouchableOpacity>
-                    <TouchableOpacity 
-                        style={(this.state.bColor==='#8A95A5') 
-                        ? [styles.colorCircles, styles.circle3, styles.selected]
-                        : [styles.colorCircles, styles.circle3]}
-                        onPress={()=>{this.setState({bColor:'#8A95A5'})}}
-                    ></TouchableOpacity>
-                    <TouchableOpacity 
-                        style={(this.state.bColor==='#B9C6AE') 
-                        ? [styles.colorCircles, styles.circle4, styles.selected]
-                        : [styles.colorCircles, styles.circle4]}
-                        onPress={()=>{this.setState({bColor:'#B9C6AE'})}}
-                    ></TouchableOpacity>
+      <View>
+     
+                        <Text style={{ fontWeight: 'bold',textAlign:'center'}}>Inbox</Text>
+                        
+                <FlatList 
+                    data={[{name:'Arslan',type:'Messages',image:require('./../images/a.jpg')},{name:'Faizan',type:'Messages',image:require('./../images/user.jpg')},{name:'Ahmed',type:'Messages',image:require('./../images/admin.jpg')},{name:'Ali',type:'Messages',image:require('./../images/f.jpg')}]}
+                    keyExtractor={(item,index)=>{
+                        return ""+index;
+                    }}
+                    style={{width:'100%'}}
+                    renderItem={({item})=>{
+                        let arrayToShow = ['md-star-outline','md-star-outline','md-star-outline','md-star-outline','md-star-outline'];
+                        for(let i = 0;i<item.ratings;i++){
+                            arrayToShow[i] = 'md-star';
+                        }
+                      
+                        return(
+
+                            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Chat')}>
+                                <Image style={styles.image} source={item.image}></Image>
+                                <View style={{flex:1,justifyContent:"center"}}>
+                                    <Text style={styles.name}>{item.name}</Text>
+                                    <Text style={styles.type}>{item.type}</Text>
+                                
+                                </View>
+                               
+                            </TouchableOpacity>
+                        )
+                    }}
+                ></FlatList>
                 </View>
-                <Button 
-                    style={styles.button}
-                    onPress={()=>this.props.navigation.navigate('Chat',{name: this.state.name, bColor: this.state.bColor })}
-                    title="Start Chatting"
-                />
-            </KeyboardAvoidingView>
-            { Platform.OS === 'android' ? <KeyboardSpacer /> : null }
-            </ImageBackground>
-        </View>
+     
     );
   }
 }
-
+export default pyschologistInbox;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#fff',
-  },
-  background: {
-      width: '100%',
-      height: '100%',
-  },
-  title: {
-      padding: 40,
-      /* omit to prevent wacky android display with keyboard */
-      /* flex: .9, */
-      fontSize: 45,
-      fontWeight: '600',
-      color: '#FFFFFF',
-      opacity: .5,
-      alignSelf: 'center',
-      justifyContent: 'center'
-  },
-  startBox: {
-      backgroundColor: 'white',  
-      flex: .9,
-      margin:12,
-      height: '44%',
-      width: '88%',
-      alignSelf: 'center', //adjusts horizontal position
-      alignItems: 'center',
-      justifyContent: 'space-evenly',
-      padding: 6,
-  },  
-  textInput: {
-      fontSize: 16,
-      fontWeight: '300',
-      color: '#757083',
-      opacity: 1,
-      alignSelf: 'center',
-      borderColor: '#757083',
-      borderWidth: 1,
-      paddingLeft: 20,
-      width: '88%',
-      height: 60
-  },
-  colorBox: {
-      width: '88%',
-      fontSize: 16,
-      fontWeight: '300',
-      color: '#757083',
-      opacity: 1,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingLeft: 20
-  },
-  colorCircles: {
-    height: 50,
-    width: 50,
-    borderRadius: 25,
+ button:{
+      flexDirection:"row",
+      padding:20,
+      borderBottomColor:'black',
+      borderBottomWidth:0.2,
+      alignItems:"center",
+      paddingVertical:10,
+      width:'100%'
+  },image:{
+    width:40, height:40, marginLeft: 5, marginTop: 10,borderRadius:99
+  },name:{
+     
+      color:'black',
+      fontSize:14,
+      padding:10,
+      marginLeft:20
+  },type:{
     
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  circle1: {
-      backgroundColor: '#090C08',
-  },
-  circle2: {
-      backgroundColor: '#474056',
-  },
-  circle3: {
-      backgroundColor: '#8A95A5',
-  },
-  circle4: {
-      backgroundColor: '#B9C6AE',
-  },
-  selected: { // indicates selected color button
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    borderWidth: 2,
-    borderColor: '#000',
-  },
-  button: {
-      width: '88%',
-      fontSize: 16,
-      fontWeight: '600',
-      color: '#FFFFFF',
-      backgroundColor: '#747083',
-      alignSelf: 'center',
-      paddingLeft: 40,
-    },
-});
+    color:'black',
+    fontSize:8,
+    paddingLeft:30
+}
+})

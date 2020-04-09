@@ -12,7 +12,7 @@ import { View } from 'react-native';
 class Chat extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
-    title: (navigation.state.params || {}).name || 'Chat!', 
+    title: (navigation.state.params || {}).name || 'Chat', 
   });
 
   state = {
@@ -21,12 +21,13 @@ class Chat extends React.Component {
 
   get user() {
     return {
-      name: this.props.navigation.state.params.name,
+     // name: this.props.navigation.state.params.name,
       _id: Fire.shared.uid,
     };
   }
 
   render() {
+    
     return (
       
       <GiftedChat

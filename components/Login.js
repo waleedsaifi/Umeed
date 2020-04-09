@@ -10,9 +10,19 @@ import {
 } from 'react-native';
 
 class Login extends Component {
-    static navigationOptions = {
-        header: null
-    }
+    static navigationOptions = {  
+        title: 'Umeed',  
+        headerStyle: {  
+            backgroundColor: '#28a745',
+        
+        },  
+        headerTintColor: 'black',  
+        headerTitleStyle: {  
+           fontWeight: 'bold',  
+           marginHorizontal: '40%',
+           
+        },  
+    };  
     constructor() {
         super();
         this.state = {
@@ -27,7 +37,7 @@ class Login extends Component {
         loginInfo.password = this.state.password;
         loginInfo.userRole= this.state.userRole;
 
-        if( loginInfo.email== 'admin' && loginInfo.password=='admin')
+        if( loginInfo.email== 'admin@admin.com' && loginInfo.password=='admin')
         {
             this.props.navigation.navigate('adminDashboard', {username:loginInfo.email});   
         }

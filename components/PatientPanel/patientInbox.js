@@ -1,132 +1,100 @@
-import React, { Component } from 'react';
-import { Button, ImageBackground, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import { Platform } from 'react-native';
+import React, { PureComponent } from 'react';
+import { View, SafeAreaView, Text, ImageBackground,StyleSheet,FlatList,Image,TouchableOpacity } from 'react-native';
 
-// import keyboard spacer so Android keyboard doesn't hide message input field
-import KeyboardSpacer from 'react-native-keyboard-spacer';
 
-export default class patientInbox extends Component {
-     
-  constructor(props) {
-    super(props);
-    this.state={ 
-        name: '',
-        bColor: '#090C08', // default background color for chat screen
-    }
-  }
+
+
+
+// const chatClient = new StreamChat('y4s364brhrg8');
+// const userToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoic2hyaWxsLW1vdW50YWluLTEifQ.d5eunqnGAfJRzh8AZfjg1UD-RALMu7JPsYKbFc5Spcg';
+// const user = {
+//   id: 'shrill-mountain-1',
+//   name: 'Shrill mountain',
+//   image:
+//     'https://stepupandlive.files.wordpress.com/2014/09/3d-animated-frog-image.jpg',
+// };
+
+// chatClient.setUser(user, userToken);
+
+class patientInbox extends PureComponent {
+  static navigationOptions = () => ({
+    headerTitle: (
+      <Text style={{ fontWeight: 'bold' }}>Awesome Conversations</Text>
+    ),
+  });
 
   render() {
     return (
-        <View style={styles.container}>
-            <ImageBackground 
-                style={styles.background}
-                source={require('./../images/background4.png')}
-               
-                >
-                    <Text style={styles.title}>Let's Chat</Text>
-            <KeyboardAvoidingView
-                style={styles.startBox}
-                behavior = 'padding'
-                enabled >
-                <TextInput
-                style={styles.textInput}
-                onChangeText={(name)=>{this.setState({name})}}
-                value={this.state.name}
-                placeholder='Your Name'
-                />
-                
-              
-                <Button 
-                    style={styles.button}
-                    onPress={()=>this.props.navigation.navigate('Chat',{name: this.state.name })}
-                    title="Start Chatting"
-                />
-            </KeyboardAvoidingView>
-            { Platform.OS === 'android' ? <KeyboardSpacer /> : null }
-            </ImageBackground>
-        </View>
+      <View>
+     
+                        <Text style={{ fontWeight: 'bold',textAlign:'center'}}>Inbox</Text>
+                        
+                <FlatList 
+                    data={[{name:'Dr Usman',type:'Messages',image:require('./../images/aa.jpg')},{name:'Dr Kashaf',type:'Messages',image:require('./../images/pic1.jpg')},{name:'Dr Bisma',type:'Messages',image:require('./../images/a1.jpg')}]}
+                    keyExtractor={(item,index)=>{
+                        return ""+index;
+                    }}
+                    style={{width:'100%'}}
+                    renderItem={({item})=>{
+                        let arrayToShow = ['md-star-outline','md-star-outline','md-star-outline','md-star-outline','md-star-outline'];
+                        for(let i = 0;i<item.ratings;i++){
+                            arrayToShow[i] = 'md-star';
+                        }
+                      
+                        return(
+
+                            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Chat')}>
+                                <Image style={styles.image} source={item.image}></Image>
+                                <View style={{flex:1,justifyContent:"center"}}>
+                                    <Text style={styles.name}>{item.name}</Text>
+                                    <Text style={styles.type}>{item.type}</Text>
+                                </View>
+                               
+                            </TouchableOpacity>
+                        )
+                    }}
+                ></FlatList>
+                </View>
+      // <SafeAreaView>
+      //   <Chat client={chatClient}>
+      //     <View style={{ display: 'flex', height: '100%', padding: 10 }}>
+      //       <ChannelList
+      //         filters={{ type: 'messaging', members: { $in: ['shrill-mountain-1'] } }}
+      //         sort={{ last_message_at: -1 }}
+      //         Preview={ChannelPreviewMessenger}
+      //         onSelect={() => {
+      //           this.props.navigation.navigate('Chat');
+      //         }}
+      //       />
+      //     </View>
+      //   </Chat>
+      // </SafeAreaView>
     );
   }
 }
-
+export default patientInbox;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#fff',
-  },
-  background: {
-      width: '100%',
-      height: '100%',
-  },
-  title: {
-      padding: 40,
-      /* omit to prevent wacky android display with keyboard */
-      /* flex: .9, */
-      fontSize: 45,
-      fontWeight: '600',
-      color: '#FFFFFF',
-      opacity: .5,
-      alignSelf: 'center',
-      justifyContent: 'center'
-  },
-  startBox: {
-      backgroundColor: 'white',  
-      flex: .9,
-      margin:12,
-      height: '44%',
-      width: '88%',
-      alignSelf: 'center', //adjusts horizontal position
-      alignItems: 'center',
-      justifyContent: 'space-evenly',
-      padding: 6,
-  },  
-  textInput: {
-      fontSize: 16,
-      fontWeight: '300',
-      color: '#757083',
-      opacity: 1,
-      alignSelf: 'center',
-      borderColor: '#757083',
-      borderWidth: 1,
-      paddingLeft: 20,
-      width: '88%',
-      height: 60
-  },
-  colorBox: {
-      width: '88%',
-      fontSize: 16,
-      fontWeight: '300',
-      color: '#757083',
-      opacity: 1,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingLeft: 20
-  },
-  colorCircles: {
-    height: 50,
-    width: 50,
-    borderRadius: 25,
+ button:{
+      flexDirection:"row",
+      padding:20,
+      borderBottomColor:'black',
+      borderBottomWidth:0.2,
+      alignItems:"center",
+      paddingVertical:10,
+      width:'100%'
+  },image:{
+    width:40, height:40, marginLeft: 5, marginTop: 10,borderRadius:99
+  },name:{
+     
+      color:'black',
+      fontSize:14,
+      padding:10,
+      marginLeft:20
+  },type:{
     
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
- 
-  selected: { // indicates selected color button
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    borderWidth: 2,
-    borderColor: '#000',
-  },
-  button: {
-      width: '88%',
-      fontSize: 16,
-      fontWeight: '600',
-      color: '#FFFFFF',
-      backgroundColor: '#747083',
-      alignSelf: 'center',
-      paddingLeft: 40,
-    },
-});
+    color:'black',
+    fontSize:8,
+    paddingLeft:30
+}
+})

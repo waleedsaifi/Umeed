@@ -79,10 +79,14 @@ export default class PsychologistList extends Component {
                                     <Text style={styles.type}>{item.email}</Text>
                                 </View>
                                 <View>
-                                    <Text style={styles.name}>1000</Text>
+                                    
                                     <Text style={styles.ratings}>{stars}</Text> 
-                                
+                                    <Icon
+                                        onPress={() => this.props.navigation.navigate('Chat')}
+                                        // onPress={() => this.showAlert()}
+                                         name="sms" />
                                 </View>
+                                
                                
                             </TouchableOpacity>
                             

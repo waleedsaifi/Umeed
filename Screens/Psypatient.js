@@ -5,7 +5,7 @@ import { ListItem, Icon } from 'react-native-elements';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 const {width} = Dimensions.get('window');
-export default class Speaker extends Component {
+export default class psypatient extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +32,7 @@ export default class Speaker extends Component {
         // var url = 'http://89.89.89.43:5000/signup';  // Office
         // var url = 'http://192.168.0.108:5000/signup' // Home
         // var url = 'http://192.168.43.21:5000/signup';   // Huawei Mate10 lite
-        var url = 'https://desolate-wave-36898.herokuapp.com/getAccount/Speakers'  
+        var url = 'https://desolate-wave-36898.herokuapp.com/getAccount/Patients'  
         return fetch(url)
             .then(res => res.json())
             .then((response) => {
@@ -62,26 +62,7 @@ export default class Speaker extends Component {
     }
 
 
-    deletePatient = () => {
-        // alert(this.state.deleteId)
-        // var url = 'http://89.89.89.43:5000/signup';  // Office
-        // var url = 'http://192.168.0.108:5000/signup';  // Home 
-        // var url = 'http://192.168.43.21:5000/signup';   // Huawei Mate10 lite
-        var url = 'https://desolate-wave-36898.herokuapp.com/signup'
-       
-        fetch(url + "/" + this.state.deleteId, {
-            method: 'DELETE'
-        }).then(res => res.json())
-            .then(response => {
-                  console.log('Deleted:', JSON.stringify(response))
-                this.hideAlert();
-                this.setState({
-                    refreshing:true
-                })
-                    // this.getRegisteredPatient();  
-            })
-            .catch(error => console.error('Error:', error));     
-    }
+
 
   
     render() {
@@ -89,7 +70,7 @@ export default class Speaker extends Component {
         return (
             <ImageBackground source={require('././images/background2.jpg')} style={{flex:9}}>
                 <View style={styles.top}>
-                    <Text style={styles.title}>Motivational Speakers</Text>
+                    <Text style={styles.title}>Patients</Text>
                 </View>
                 <FlatList 
                    // data={[{name:'Dr Zubair',Fee:'$ 100/hr',ratings:2,image:require('../images/profile.png')},{name:'Dr. Adnan',Fee:'$ 500/hr',ratings:4,image:require('../images/profile.png')},{name:'Dr. Zulfiqar',Fee:'$ 500/hr',ratings:4,image:require('../images/profile.png')},{name:'Dr. Rohma ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')},{name:'Dr. Ahad ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')},{name:'Dr. Anas ',Fee:'$ 100/hr',ratings:3,image:require('../images/profile.png')}]}
@@ -115,18 +96,7 @@ export default class Speaker extends Component {
                                     <Text style={styles.name}>{item.name}</Text>
                                     <Text style={styles.type}>{item.email}</Text>
                                 </View>
-                                <View>
-                                    
-                                    {/* <Text style={styles.ratings}>{stars}</Text> */}
-                                   
-                                    <Icon
-                                        onPress={() => this.sendPatientId(item)}
-                                        // onPress={() => this.showAlert()}
-                                        raised name="delete" />
-                                
-                                   
-                                
-                                </View>
+                               
                                
                             </TouchableOpacity>
                             
@@ -135,17 +105,7 @@ export default class Speaker extends Component {
                     
                     }}
                 ></FlatList>
-                 <AwesomeAlert
-                        //  data={this.state.data}
-                        show={showAlert} showProgress={false}
-                        title="Alert" message="Are you sure to remove this Patient?"
-                        closeOnTouchOutside={false} closeOnHardwareBackPress={false}
-                        showCancelButton={true} showConfirmButton={true}
-                        cancelText="cancel" confirmText="Delete"
-                        confirmButtonColor="#DD6B55"
-                        onCancelPressed={() => { this.hideAlert();}}
-                        onConfirmPressed={() => { this.deletePatient();}}
-                    />
+               
             </ImageBackground>
         )
     }
