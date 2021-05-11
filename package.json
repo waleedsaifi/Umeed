@@ -20,7 +20,7 @@
     "firebase": "^7.5.2",
     "global": "^4.4.0",
     "link": "^0.1.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "native-base": "^2.13.5",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
