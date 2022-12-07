@@ -12,7 +12,7 @@
     "@react-native-community/masked-view": "^0.1.7",
     "@react-native-community/netinfo": "^4.7.0",
     "expo": "^34.0.1",
-    "expo-cli": "^3.15.5",
+    "expo-cli": "^6.0.8",
     "expo-document-picker": "^8.1.0",
     "expo-image-picker": "^6.0.0",
     "expo-location": "^8.0.0",
